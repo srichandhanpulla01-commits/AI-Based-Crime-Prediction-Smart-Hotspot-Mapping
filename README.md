@@ -1,5 +1,12 @@
 # Crime Intelligence & Predictive Policing System
 
+ACCESS THE WEBSITE THROUGH : https://crime-intelligence-dashboard.onrender.com/
+
+Default demo login:
+
+- Username: `admin`
+- Password: `police123`
+- 
 Official-style Flask dashboard for:
 
 - FIR visualization on maps
@@ -9,6 +16,7 @@ Official-style Flask dashboard for:
 - women safety analysis
 - emergency alert dispatch guidance
 
+ACCESS THE WEBSITE THROUGH : https://crime-intelligence-dashboard.onrender.com/
 ## Run Locally
 
 Use your installed Python:
@@ -23,9 +31,6 @@ Open:
 http://127.0.0.1:5000
 ```
 
-Default demo login:
 
-- Username: `admin`
-- Password: `police123`
 
 
