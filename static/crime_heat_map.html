@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_c208116eae2d748e5e110142e813bc29 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.css"/>
+    <script src="https://cdn.jsdelivr.net/gh/python-visualization/folium@main/folium/templates/leaflet_heat.min.js"></script>
+</head>
+<body>
+    
+    
+    <div style="position: fixed; bottom: 24px; left: 24px; z-index: 9999; background: white; padding: 12px 14px; border-radius: 14px; box-shadow: 0 8px 24px rgba(0,0,0,0.18); font-size: 12px; max-width: 270px;">
+        <div style="font-weight:700; margin-bottom:8px;">Crime Heat Map</div>
+        <div><span style="display:inline-block;width:12px;height:12px;background:#22c55e;border-radius:50%;margin-right:8px;"></span>Low collective activity</div>
+        <div><span style="display:inline-block;width:12px;height:12px;background:#f59e0b;border-radius:50%;margin-right:8px;"></span>Moderate collective activity</div>
+        <div><span style="display:inline-block;width:12px;height:12px;background:#ef4444;border-radius:50%;margin-right:8px;"></span>High collective activity</div>
+        <div><span style="display:inline-block;width:12px;height:12px;background:#991b1b;border-radius:50%;margin-right:8px;"></span>Critical crime concentration</div>
+    </div>
+    
+    
+            <div class="folium-map" id="map_c208116eae2d748e5e110142e813bc29" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_c208116eae2d748e5e110142e813bc29 = L.map(
+                "map_c208116eae2d748e5e110142e813bc29",
+                {
+                    center: [13.052625346534654, 80.35201786138614],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 12,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+            L.control.scale().addTo(map_c208116eae2d748e5e110142e813bc29);
+
+            
+
+        
+    
+            var tile_layer_841b66c003ed4db8c52d2d6fbc68d163 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_841b66c003ed4db8c52d2d6fbc68d163.addTo(map_c208116eae2d748e5e110142e813bc29);
+        
+    
+            var tile_layer_2ec16bb4f8335c6cb49e9404231db025 = L.tileLayer(
+                "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "Esri",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_2ec16bb4f8335c6cb49e9404231db025.addTo(map_c208116eae2d748e5e110142e813bc29);
+        
+    
+            var tile_layer_27e6ed37a21f1739794f317317d53dbc = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "CartoDB Voyager",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_27e6ed37a21f1739794f317317d53dbc.addTo(map_c208116eae2d748e5e110142e813bc29);
+        
+    
+            L.control.fullscreen(
+                {
+  "position": "topright",
+  "title": "Full Screen",
+  "titleCancel": "Exit Full Screen",
+  "forceSeparateButton": false,
+}
+            ).addTo(map_c208116eae2d748e5e110142e813bc29);
+        
+    
+            var tile_layer_c955feb80916e1ebb7683fb6ddc9aa68 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detect_retina": false, "max_native_zoom": 19, "max_zoom": 19, "min_zoom": 0, "no_wrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+            var mini_map_9f173036a2bebc95b32442dfb167cc9d = new L.Control.MiniMap(
+                tile_layer_c955feb80916e1ebb7683fb6ddc9aa68,
+                {
+  "position": "bottomright",
+  "width": 150,
+  "height": 150,
+  "collapsedWidth": 25,
+  "collapsedHeight": 25,
+  "zoomLevelOffset": -5,
+  "centerFixed": false,
+  "zoomAnimation": false,
+  "toggleDisplay": true,
+  "autoToggleDisplay": false,
+  "minimized": false,
+}
+            );
+            map_c208116eae2d748e5e110142e813bc29.addControl(mini_map_9f173036a2bebc95b32442dfb167cc9d);
+        
+    
+            var heat_map_a10d8a021ca52b595b89af596487cc95 = L.heatLayer(
+                [[13.075431, 80.2533, 2.3], [13.051133, 80.25184, 1.8], [13.034277, 80.243198, 1.7], [13.082827, 80.211528, 1.5], [13.030246, 80.265145, 1.6], [12.994747, 80.26206, 1.6], [12.97898, 80.22867, 1.7], [13.114938, 80.297773, 1.8], [13.078885, 80.266764, 1.3], [13.051502, 80.255884, 1.9], [13.036414, 80.245771, 1.1], [13.082965, 80.202614, 1.8], [13.029176, 80.276787, 2.5], [12.99953, 80.263133, 1.5], [12.974346, 80.222082, 1.6], [13.109209, 80.302461, 1.6], [13.078978, 80.255345, 1.7], [13.055006, 80.266138, 2.3], [13.044685, 80.241533, 2.4], [13.081085, 80.209056, 1.9], [13.033923, 80.263403, 1.1], [13.0054, 80.25713, 1.8], [12.970712, 80.227966, 2.2], [13.109554, 80.295578, 1.5], [13.080848, 80.261423, 1.6], [13.053141, 80.264159, 1.6], [13.040184, 80.250447, 1.7], [13.083266, 80.203124, 2.5], [13.025915, 80.273025, 1.3], [13.006954, 80.249634, 1.9], [12.979028, 80.224674, 1.1], [13.11862, 80.289547, 1.8], [13.071778, 80.266721, 1.7], [13.060551, 80.263009, 1.5], [13.042381, 80.241943, 2.3], [13.083297, 80.216872, 1.6], [13.041304, 80.276522, 1.7], [13.000902, 80.262334, 1.8], [12.986165, 80.217343, 2.5], [13.116845, 80.298188, 1.9], [13.069947, 80.268399, 1.1], [13.049702, 80.257829, 1.8], [13.047421, 80.240796, 1.7], [13.094366, 80.211215, 1.5], [13.036318, 80.270744, 2.4], [13.003916, 80.253527, 1.6], [12.977716, 80.227964, 1.7], [13.106872, 80.28991, 1.8], [13.079268, 80.258812, 1.3], [13.059586, 80.259074, 2.5], [13.035647, 80.241413, 1.1], [13.088977, 80.213582, 2.3], [13.029818, 80.276231, 1.7], [12.993905, 80.253837, 1.5], [12.979227, 80.219943, 1.6], [13.114429, 80.299854, 1.6], [13.065869, 80.258734, 1.7], [13.059571, 80.255859, 2.2], [13.048612, 80.243488, 1.3], [13.08217, 80.216892, 1.9], [13.038398, 80.26343, 1.1], [13.006265, 80.255865, 2.5], [12.970779, 80.21619, 1.7], [13.111318, 80.29465, 1.5], [13.079233, 80.257079, 1.6], [13.058445, 80.255731, 1.6], [13.048192, 80.242741, 1.7], [13.085128, 80.20322, 1.8], [13.033914, 80.27237, 2.3], [13.002071, 80.251569, 1.9], [12.979167, 80.213106, 2.4], [13.118272, 80.296207, 1.8], [13.07601, 80.261079, 1.7], [13.050394, 80.265432, 2.5], [13.046705, 80.242058, 1.6], [13.086587, 80.216278, 1.6], [13.032194, 80.264061, 1.7], [12.996014, 80.263827, 1.8], [12.98508, 80.215042, 1.3], [13.115502, 80.298008, 1.9], [13.077098, 80.260495, 1.1], [13.058928, 80.254594, 1.8], [13.039174, 80.253988, 1.7], [13.085429, 80.204545, 1.5], [13.031094, 80.269155, 2.5], [12.999432, 80.260817, 2.3], [12.970494, 80.218728, 1.7], [13.109211, 80.293473, 1.8], [13.076787, 80.266348, 2.2], [13.05837, 80.260808, 1.9], [13.036708, 80.243863, 2.4], [13.08453, 80.21428, 1.8], [13.039159, 80.269225, 1.7], [13.003602, 80.261, 1.5], [12.983828, 80.223041, 1.6], [13.114724, 80.289987, 2.5], [13.074894, 80.26832, 1.7], [13.058159, 80.265062, 1.8], [13.035016, 80.25075, 1.3], [13.09204, 80.211155, 1.9], [13.44835, 90.324, 1.1]],
+                {
+  "minOpacity": 0.3,
+  "maxZoom": 15,
+  "radius": 28,
+  "blur": 20,
+  "gradient": {
+  0.2: "#22c55e",
+  0.45: "#f59e0b",
+  0.7: "#ef4444",
+  1.0: "#991b1b",
+},
+}
+            );
+        
+    
+            heat_map_a10d8a021ca52b595b89af596487cc95.addTo(map_c208116eae2d748e5e110142e813bc29);
+        
+    
+            var circle_d45132d2b8e0fbdf375e0fbeea21f61a = L.circle(
+                [13.059571, 80.255859],
+                {"bubblingMouseEvents": true, "color": "#f59e0b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f59e0b", "fillOpacity": 0.18, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 180, "stroke": true, "weight": 3}
+            ).addTo(map_c208116eae2d748e5e110142e813bc29);
+        
+    
+        var popup_11cc36cb2d165dec4b49351ae85bb457 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_71ba0b56e893a91eed27720456efe2a4 = $(`<div id="html_71ba0b56e893a91eed27720456efe2a4" style="width: 100.0%; height: 100.0%;"><b>Elevated Collective Crime Zone</b><br>Location: Beach Road, Thousand Lights, Chennai<br>Likely crime: Kidnapping<br>Nearby incidents: 3<br>Risk score: 74.8</div>`)[0];
+                popup_11cc36cb2d165dec4b49351ae85bb457.setContent(html_71ba0b56e893a91eed27720456efe2a4);
+            
+        
+
+        circle_d45132d2b8e0fbdf375e0fbeea21f61a.bindPopup(popup_11cc36cb2d165dec4b49351ae85bb457)
+        ;
+
+        
+    
+    
+            circle_d45132d2b8e0fbdf375e0fbeea21f61a.bindTooltip(
+                `<div>
+                     Elevated | Beach Road, Thousand Lights, Chennai
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_3af14db9b2bfe204999d761b1948d587 = L.marker(
+                [13.059571, 80.255859],
+                {
+}
+            ).addTo(map_c208116eae2d748e5e110142e813bc29);
+        
+    
+            var div_icon_38b05e0d4825a4ad835c68be7a27817c = L.divIcon({
+  "html": "\u003cdiv style=\u0027background:#f59e0b;color:white;padding:6px 10px;border-radius:999px;font-size:11px;font-weight:700;box-shadow:0 8px 16px rgba(0,0,0,0.18);\u0027\u003eElevated Zone\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+            marker_3af14db9b2bfe204999d761b1948d587.bindTooltip(
+                `<div>
+                     Elevated | Beach Road, Thousand Lights, Chennai
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_3af14db9b2bfe204999d761b1948d587.setIcon(div_icon_38b05e0d4825a4ad835c68be7a27817c);
+            
+    
+            var circle_19f4af15c4f7b60c15405ad72f91259f = L.circle(
+                [13.115502, 80.298008],
+                {"bubblingMouseEvents": true, "color": "#f59e0b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f59e0b", "fillOpacity": 0.18, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 180, "stroke": true, "weight": 3}
+            ).addTo(map_c208116eae2d748e5e110142e813bc29);
+        
+    
+        var popup_6aa618a9c87276d4d6d40fe95f0fa502 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_59cbd535547d283e96079cc90937dac4 = $(`<div id="html_59cbd535547d283e96079cc90937dac4" style="width: 100.0%; height: 100.0%;"><b>Elevated Collective Crime Zone</b><br>Location: Beach Road, Royapuram, Chennai<br>Likely crime: Drug Offence<br>Nearby incidents: 3<br>Risk score: 74.8</div>`)[0];
+                popup_6aa618a9c87276d4d6d40fe95f0fa502.setContent(html_59cbd535547d283e96079cc90937dac4);
+            
+        
+
+        circle_19f4af15c4f7b60c15405ad72f91259f.bindPopup(popup_6aa618a9c87276d4d6d40fe95f0fa502)
+        ;
+
+        
+    
+    
+            circle_19f4af15c4f7b60c15405ad72f91259f.bindTooltip(
+                `<div>
+                     Elevated | Beach Road, Royapuram, Chennai
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_5f37f76eaa29b94590f29210324621eb = L.marker(
+                [13.115502, 80.298008],
+                {
+}
+            ).addTo(map_c208116eae2d748e5e110142e813bc29);
+        
+    
+            var div_icon_0f74e645da707bcc39f02123a864d710 = L.divIcon({
+  "html": "\u003cdiv style=\u0027background:#f59e0b;color:white;padding:6px 10px;border-radius:999px;font-size:11px;font-weight:700;box-shadow:0 8px 16px rgba(0,0,0,0.18);\u0027\u003eElevated Zone\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+            marker_5f37f76eaa29b94590f29210324621eb.bindTooltip(
+                `<div>
+                     Elevated | Beach Road, Royapuram, Chennai
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_5f37f76eaa29b94590f29210324621eb.setIcon(div_icon_0f74e645da707bcc39f02123a864d710);
+            
+    
+            var circle_3073f2b3f99c8e46d93701687dddce0b = L.circle(
+                [13.082965, 80.202614],
+                {"bubblingMouseEvents": true, "color": "#f59e0b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f59e0b", "fillOpacity": 0.18, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 180, "stroke": true, "weight": 3}
+            ).addTo(map_c208116eae2d748e5e110142e813bc29);
+        
+    
+        var popup_791ecfc42d28dd4403610427d5446cfd = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f239a22623b544b2210a99e6634d8651 = $(`<div id="html_f239a22623b544b2210a99e6634d8651" style="width: 100.0%; height: 100.0%;"><b>Elevated Collective Crime Zone</b><br>Location: Temple Street, Anna Nagar, Chennai<br>Likely crime: Robbery<br>Nearby incidents: 2<br>Risk score: 71.6</div>`)[0];
+                popup_791ecfc42d28dd4403610427d5446cfd.setContent(html_f239a22623b544b2210a99e6634d8651);
+            
+        
+
+        circle_3073f2b3f99c8e46d93701687dddce0b.bindPopup(popup_791ecfc42d28dd4403610427d5446cfd)
+        ;
+
+        
+    
+    
+            circle_3073f2b3f99c8e46d93701687dddce0b.bindTooltip(
+                `<div>
+                     Elevated | Temple Street, Anna Nagar, Chennai
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_e589b0f27e2c783e49e114772092734b = L.marker(
+                [13.082965, 80.202614],
+                {
+}
+            ).addTo(map_c208116eae2d748e5e110142e813bc29);
+        
+    
+            var div_icon_61f1d69554e5e141f7db8529f75e7914 = L.divIcon({
+  "html": "\u003cdiv style=\u0027background:#f59e0b;color:white;padding:6px 10px;border-radius:999px;font-size:11px;font-weight:700;box-shadow:0 8px 16px rgba(0,0,0,0.18);\u0027\u003eElevated Zone\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+            marker_e589b0f27e2c783e49e114772092734b.bindTooltip(
+                `<div>
+                     Elevated | Temple Street, Anna Nagar, Chennai
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e589b0f27e2c783e49e114772092734b.setIcon(div_icon_61f1d69554e5e141f7db8529f75e7914);
+            
+    
+            var circle_486e8c5d47ed6164808dc16bf2626cde = L.circle(
+                [13.0054, 80.25713],
+                {"bubblingMouseEvents": true, "color": "#f59e0b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f59e0b", "fillOpacity": 0.18, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 180, "stroke": true, "weight": 3}
+            ).addTo(map_c208116eae2d748e5e110142e813bc29);
+        
+    
+        var popup_e966c786fb16c24ee8523394927187b4 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9c340b7d156741c18eecbc6202a4c922 = $(`<div id="html_9c340b7d156741c18eecbc6202a4c922" style="width: 100.0%; height: 100.0%;"><b>Elevated Collective Crime Zone</b><br>Location: Beach Road, Adyar, Chennai<br>Likely crime: Robbery<br>Nearby incidents: 2<br>Risk score: 71.6</div>`)[0];
+                popup_e966c786fb16c24ee8523394927187b4.setContent(html_9c340b7d156741c18eecbc6202a4c922);
+            
+        
+
+        circle_486e8c5d47ed6164808dc16bf2626cde.bindPopup(popup_e966c786fb16c24ee8523394927187b4)
+        ;
+
+        
+    
+    
+            circle_486e8c5d47ed6164808dc16bf2626cde.bindTooltip(
+                `<div>
+                     Elevated | Beach Road, Adyar, Chennai
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_fae13af35e171bca60861c8796cc2a64 = L.marker(
+                [13.0054, 80.25713],
+                {
+}
+            ).addTo(map_c208116eae2d748e5e110142e813bc29);
+        
+    
+            var div_icon_9164584cf6c8112c94b62a988d3ac4fe = L.divIcon({
+  "html": "\u003cdiv style=\u0027background:#f59e0b;color:white;padding:6px 10px;border-radius:999px;font-size:11px;font-weight:700;box-shadow:0 8px 16px rgba(0,0,0,0.18);\u0027\u003eElevated Zone\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+            marker_fae13af35e171bca60861c8796cc2a64.bindTooltip(
+                `<div>
+                     Elevated | Beach Road, Adyar, Chennai
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_fae13af35e171bca60861c8796cc2a64.setIcon(div_icon_9164584cf6c8112c94b62a988d3ac4fe);
+            
+    
+            var circle_371e6f79f38e11d7bbf5042b5005972d = L.circle(
+                [13.029176, 80.276787],
+                {"bubblingMouseEvents": true, "color": "#f59e0b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f59e0b", "fillOpacity": 0.18, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 180, "stroke": true, "weight": 3}
+            ).addTo(map_c208116eae2d748e5e110142e813bc29);
+        
+    
+        var popup_ae02453e1986e048c7e3d0b06d698879 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f1f007d0867da00af7140da2e2a68b89 = $(`<div id="html_f1f007d0867da00af7140da2e2a68b89" style="width: 100.0%; height: 100.0%;"><b>Elevated Collective Crime Zone</b><br>Location: Temple Street, Mylapore, Chennai<br>Likely crime: Murder<br>Nearby incidents: 2<br>Risk score: 70.4</div>`)[0];
+                popup_ae02453e1986e048c7e3d0b06d698879.setContent(html_f1f007d0867da00af7140da2e2a68b89);
+            
+        
+
+        circle_371e6f79f38e11d7bbf5042b5005972d.bindPopup(popup_ae02453e1986e048c7e3d0b06d698879)
+        ;
+
+        
+    
+    
+            circle_371e6f79f38e11d7bbf5042b5005972d.bindTooltip(
+                `<div>
+                     Elevated | Temple Street, Mylapore, Chennai
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_22479973d196b3ef392bac8122b30f18 = L.marker(
+                [13.029176, 80.276787],
+                {
+}
+            ).addTo(map_c208116eae2d748e5e110142e813bc29);
+        
+    
+            var div_icon_f0c5c8ba500dd67d7b930a33cbdd7356 = L.divIcon({
+  "html": "\u003cdiv style=\u0027background:#f59e0b;color:white;padding:6px 10px;border-radius:999px;font-size:11px;font-weight:700;box-shadow:0 8px 16px rgba(0,0,0,0.18);\u0027\u003eElevated Zone\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+            marker_22479973d196b3ef392bac8122b30f18.bindTooltip(
+                `<div>
+                     Elevated | Temple Street, Mylapore, Chennai
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_22479973d196b3ef392bac8122b30f18.setIcon(div_icon_f0c5c8ba500dd67d7b930a33cbdd7356);
+            
+    
+            var circle_23bf7e9dac305978bb96b4a732525887 = L.circle(
+                [12.986165, 80.217343],
+                {"bubblingMouseEvents": true, "color": "#f59e0b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f59e0b", "fillOpacity": 0.18, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 180, "stroke": true, "weight": 3}
+            ).addTo(map_c208116eae2d748e5e110142e813bc29);
+        
+    
+        var popup_dd3af2efb5c701de545d3d484e537a88 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_900facd5716615d3a372fd59d15b14a5 = $(`<div id="html_900facd5716615d3a372fd59d15b14a5" style="width: 100.0%; height: 100.0%;"><b>Elevated Collective Crime Zone</b><br>Location: Mall Signal, Velachery, Chennai<br>Likely crime: Murder<br>Nearby incidents: 1<br>Risk score: 70.0</div>`)[0];
+                popup_dd3af2efb5c701de545d3d484e537a88.setContent(html_900facd5716615d3a372fd59d15b14a5);
+            
+        
+
+        circle_23bf7e9dac305978bb96b4a732525887.bindPopup(popup_dd3af2efb5c701de545d3d484e537a88)
+        ;
+
+        
+    
+    
+            circle_23bf7e9dac305978bb96b4a732525887.bindTooltip(
+                `<div>
+                     Elevated | Mall Signal, Velachery, Chennai
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_540a433ae2833e262fb841958f5ef079 = L.marker(
+                [12.986165, 80.217343],
+                {
+}
+            ).addTo(map_c208116eae2d748e5e110142e813bc29);
+        
+    
+            var div_icon_88f96e2ff2f581dad1ecd7e5616c4b30 = L.divIcon({
+  "html": "\u003cdiv style=\u0027background:#f59e0b;color:white;padding:6px 10px;border-radius:999px;font-size:11px;font-weight:700;box-shadow:0 8px 16px rgba(0,0,0,0.18);\u0027\u003eElevated Zone\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+            marker_540a433ae2833e262fb841958f5ef079.bindTooltip(
+                `<div>
+                     Elevated | Mall Signal, Velachery, Chennai
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_540a433ae2833e262fb841958f5ef079.setIcon(div_icon_88f96e2ff2f581dad1ecd7e5616c4b30);
+            
+    
+            var layer_control_32c55bc748336a4fcb224c610accb9fd_layers = {
+                base_layers : {
+                    "Street Map" : tile_layer_841b66c003ed4db8c52d2d6fbc68d163,
+                    "Satellite View" : tile_layer_2ec16bb4f8335c6cb49e9404231db025,
+                    "Navigation View" : tile_layer_27e6ed37a21f1739794f317317d53dbc,
+                },
+                overlays :  {
+                    "Crime Density" : heat_map_a10d8a021ca52b595b89af596487cc95,
+                },
+            };
+            let layer_control_32c55bc748336a4fcb224c610accb9fd = L.control.layers(
+                layer_control_32c55bc748336a4fcb224c610accb9fd_layers.base_layers,
+                layer_control_32c55bc748336a4fcb224c610accb9fd_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": false,
+  "autoZIndex": true,
+}
+            ).addTo(map_c208116eae2d748e5e110142e813bc29);
+
+        
+</script>
+</html>

@@ -1,0 +1,7 @@
+latitude,longitude,crime_type,time,people,section,location_name
+13.0827,80.2707,theft,night,unknown,IPC 379,"Zone 5 Royapuram, CMWSSB Division 58, Raja Muthiah Road, Chennai Corporation, Chennai"
+13.0878,80.2785,robbery,day,unknown,IPC 392,"Zone 5 Royapuram, CMWSSB Division 59, Ekambareswara Agraharam Street, Chennai Corporation, Chennai"
+13.075,80.26,assault,evening,unknown,IPC 351,"Zone 5 Royapuram, CMWSSB Division 61, Chennai Corporation, Chennai"
+13.0835,80.272,theft,night,Test A,IPC 379,"Zone 5 Royapuram, CMWSSB Division 58, Chennai Corporation, Chennai"
+13.987,80.272,theft,day,Test A,a,India
+11.23434,90.324,muder,night,1 suspect,unknown,Location unavailable

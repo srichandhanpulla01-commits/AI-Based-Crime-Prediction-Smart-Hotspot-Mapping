@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+    <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_3fcb0ab0275e6f51ad642ebc721a1c28 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.css"/>
+</head>
+<body>
+    
+    
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var mapRef = map_3fcb0ab0275e6f51ad642ebc721a1c28;
+        var routeData = {"start": [13.110243, 80.254983], "end": [12.996529, 80.06965], "color": "#0b57d0"};
+        function drawRoute() {
+            if (!window.L || !L.Routing || !mapRef) {
+                return;
+            }
+            L.Routing.control({
+                waypoints: [
+                    L.latLng(routeData.start[0], routeData.start[1]),
+                    L.latLng(routeData.end[0], routeData.end[1])
+                ],
+                fitSelectedRoutes: true,
+                addWaypoints: false,
+                draggableWaypoints: false,
+                routeWhileDragging: false,
+                show: true,
+                lineOptions: {
+                    styles: [{ color: routeData.color, opacity: 0.92, weight: 7 }]
+                }
+            }).addTo(mapRef);
+        }
+        if (window.L && L.Routing) drawRoute();
+        else setTimeout(drawRoute, 1600);
+    });
+    </script>
+    
+    
+            <div class="folium-map" id="map_3fcb0ab0275e6f51ad642ebc721a1c28" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_3fcb0ab0275e6f51ad642ebc721a1c28 = L.map(
+                "map_3fcb0ab0275e6f51ad642ebc721a1c28",
+                {
+                    center: [13.053386, 80.1623165],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 12,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+            L.control.scale().addTo(map_3fcb0ab0275e6f51ad642ebc721a1c28);
+
+            
+
+        
+    
+            var tile_layer_ade3db4054c2a62b9edc1e5e2014fe1f = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_ade3db4054c2a62b9edc1e5e2014fe1f.addTo(map_3fcb0ab0275e6f51ad642ebc721a1c28);
+        
+    
+            var tile_layer_bf38be9712865da5a71c67c5a58d15f2 = L.tileLayer(
+                "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "Esri",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_bf38be9712865da5a71c67c5a58d15f2.addTo(map_3fcb0ab0275e6f51ad642ebc721a1c28);
+        
+    
+            var tile_layer_fba010cf7058f7db9fe3ab04ea0d4d12 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "CartoDB Voyager",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_fba010cf7058f7db9fe3ab04ea0d4d12.addTo(map_3fcb0ab0275e6f51ad642ebc721a1c28);
+        
+    
+            L.control.fullscreen(
+                {
+  "position": "topright",
+  "title": "Full Screen",
+  "titleCancel": "Exit Full Screen",
+  "forceSeparateButton": false,
+}
+            ).addTo(map_3fcb0ab0275e6f51ad642ebc721a1c28);
+        
+    
+            var tile_layer_52df6a17bb1a19e469333dbee44a78af = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detect_retina": false, "max_native_zoom": 19, "max_zoom": 19, "min_zoom": 0, "no_wrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+            var mini_map_69a1bc9bf892dc350f8061a05b6e3649 = new L.Control.MiniMap(
+                tile_layer_52df6a17bb1a19e469333dbee44a78af,
+                {
+  "position": "bottomright",
+  "width": 150,
+  "height": 150,
+  "collapsedWidth": 25,
+  "collapsedHeight": 25,
+  "zoomLevelOffset": -5,
+  "centerFixed": false,
+  "zoomAnimation": false,
+  "toggleDisplay": true,
+  "autoToggleDisplay": false,
+  "minimized": false,
+}
+            );
+            map_3fcb0ab0275e6f51ad642ebc721a1c28.addControl(mini_map_69a1bc9bf892dc350f8061a05b6e3649);
+        
+    
+            var marker_636e2a01bb621e709378f2e240ea845b = L.marker(
+                [13.110243, 80.254983],
+                {
+}
+            ).addTo(map_3fcb0ab0275e6f51ad642ebc721a1c28);
+        
+    
+            var icon_49a1919222f9904750ec79526f0dea09 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "play",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_072d4a54cfd4c3383dc651e9ed1c6fa9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_81a72550897b1d324c02a0a433f9d182 = $(`<div id="html_81a72550897b1d324c02a0a433f9d182" style="width: 100.0%; height: 100.0%;"><b>Start</b><br>Zone 4 Tondiarpet, CMWSSB Division 45, Chennai Corporation</div>`)[0];
+                popup_072d4a54cfd4c3383dc651e9ed1c6fa9.setContent(html_81a72550897b1d324c02a0a433f9d182);
+            
+        
+
+        marker_636e2a01bb621e709378f2e240ea845b.bindPopup(popup_072d4a54cfd4c3383dc651e9ed1c6fa9)
+        ;
+
+        
+    
+    
+            marker_636e2a01bb621e709378f2e240ea845b.bindTooltip(
+                `<div>
+                     Start | Zone 4 Tondiarpet, CMWSSB Division 45, Chennai Corporation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_636e2a01bb621e709378f2e240ea845b.setIcon(icon_49a1919222f9904750ec79526f0dea09);
+            
+    
+            var marker_306e157e28e5418a05a1cee9d915ee53 = L.marker(
+                [12.996529, 80.06965],
+                {
+}
+            ).addTo(map_3fcb0ab0275e6f51ad642ebc721a1c28);
+        
+    
+            var icon_80b6cdd673d69b2c3ee25f5e36b389d5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "flag",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_fa072fd13614cc7d21031719a7be480a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_77bfb183b301e0996c827a9890260b5f = $(`<div id="html_77bfb183b301e0996c827a9890260b5f" style="width: 100.0%; height: 100.0%;"><b>Destination</b><br>Chembarambakkam Dam Road, Srikulathur</div>`)[0];
+                popup_fa072fd13614cc7d21031719a7be480a.setContent(html_77bfb183b301e0996c827a9890260b5f);
+            
+        
+
+        marker_306e157e28e5418a05a1cee9d915ee53.bindPopup(popup_fa072fd13614cc7d21031719a7be480a)
+        ;
+
+        
+    
+    
+            marker_306e157e28e5418a05a1cee9d915ee53.bindTooltip(
+                `<div>
+                     Destination | Chembarambakkam Dam Road, Srikulathur
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_306e157e28e5418a05a1cee9d915ee53.setIcon(icon_80b6cdd673d69b2c3ee25f5e36b389d5);
+            
+    
+            var circle_marker_1fd28c0aa516eec671b4b915d8b3e66a = L.circleMarker(
+                [13.083266, 80.203124],
+                {"bubblingMouseEvents": true, "color": "#ffffff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#991b1b", "fillOpacity": 0.92, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 1}
+            ).addTo(map_3fcb0ab0275e6f51ad642ebc721a1c28);
+        
+    
+        var popup_67f9dedbb2b4ac97e59a1115574f3714 = L.popup({
+  "maxWidth": 360,
+});
+
+        
+            
+                var html_d11603367fc1eee5a7ab34999e4dfe37 = $(`<div id="html_d11603367fc1eee5a7ab34999e4dfe37" style="width: 100.0%; height: 100.0%;">     <div style="min-width:290px;font-family:Segoe UI,sans-serif;">         <h4 style="margin:0 0 10px;color:#0f172a;">Incident Detail</h4>         <div style="display:flex;gap:12px;align-items:flex-start;margin-bottom:10px;">             <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAiIGhlaWdodD0iMTkwIiB2aWV3Qm94PSIwIDAgMTYwIDE5MCI+CiAgICAgIDxyZWN0IHdpZHRoPSIxNjAiIGhlaWdodD0iMTkwIiByeD0iMTQiIGZpbGw9IiNmOGZhZmMiLz4KICAgICAgPHJlY3QgeD0iOCIgeT0iOCIgd2lkdGg9IjE0NCIgaGVpZ2h0PSIxNzQiIHJ4PSIxMiIgZmlsbD0iI2UyZThmMCIgc3Ryb2tlPSIjOTkxYjFiIiBzdHJva2Utd2lkdGg9IjUiLz4KICAgICAgPHJlY3QgeD0iMjAiIHk9IjE4IiB3aWR0aD0iMTIwIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iIzk5MWIxYiIvPgogICAgICA8dGV4dCB4PSI4MCIgeT0iMzkiIGZvbnQtc2l6ZT0iMTYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IndoaXRlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiPkNSSVRJQ0FMPC90ZXh0PgogICAgICA8Y2lyY2xlIGN4PSI4MCIgY3k9Ijg2IiByPSIyOCIgZmlsbD0iIzMzNDE1NSIvPgogICAgICA8cmVjdCB4PSI0OCIgeT0iMTE4IiB3aWR0aD0iNjQiIGhlaWdodD0iNDAiIHJ4PSIxOCIgZmlsbD0iIzMzNDE1NSIvPgogICAgICA8dGV4dCB4PSI4MCIgeT0iMTcxIiBmb250LXNpemU9IjEyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMGYxNzJhIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiPkNDVE5TLTIwMjYtMTAyODwvdGV4dD4KICAgICAgPHRleHQgeD0iODAiIHk9IjE4NCIgZm9udC1zaXplPSIxMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzQ3NTU2OSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIj5NdXJkZXI8L3RleHQ+CiAgICA8L3N2Zz4=" alt="Suspect profile" style="width:96px;height:114px;object-fit:cover;border-radius:10px;border:3px solid #991b1b;background:#fff;" />             <div style="flex:1;padding:8px 10px;background:#eff6ff;border-left:4px solid #991b1b;border-radius:8px;color:#0f172a;">                 <strong>Murder</strong><br>Bus Stand, Anna Nagar, Chennai<br>                 <span style="display:inline-block;margin-top:6px;padding:4px 8px;border-radius:999px;background:#991b1b;color:white;font-size:11px;font-weight:700;">Critical Criticality</span>             </div>         </div>         <table style="width:100%;border-collapse:collapse;font-size:13px;">             <tr><td style="padding:6px 8px;font-weight:700;">FIR Number</td><td style="padding:6px 8px;">CCTNS-2026-1028</td></tr>             <tr style="background:#f8fafc;"><td style="padding:6px 8px;font-weight:700;">Police Station</td><td style="padding:6px 8px;">Anna Nagar Police Station</td></tr>             <tr><td style="padding:6px 8px;font-weight:700;">Incident Date</td><td style="padding:6px 8px;">2026-01-28</td></tr>             <tr style="background:#f8fafc;"><td style="padding:6px 8px;font-weight:700;">Time Slot</td><td style="padding:6px 8px;">Evening</td></tr>             <tr><td style="padding:6px 8px;font-weight:700;">IPC Section</td><td style="padding:6px 8px;">IPC 302</td></tr>             <tr style="background:#f8fafc;"><td style="padding:6px 8px;font-weight:700;">People</td><td style="padding:6px 8px;">woman complainant, 1 accused</td></tr>             <tr><td style="padding:6px 8px;font-weight:700;">Victims / Suspects</td><td style="padding:6px 8px;">2 / 2</td></tr>             <tr style="background:#f8fafc;"><td style="padding:6px 8px;font-weight:700;">Status</td><td style="padding:6px 8px;">Registered</td></tr>             <tr><td style="padding:6px 8px;font-weight:700;">Criticality</td><td style="padding:6px 8px;">Critical</td></tr>             <tr style="background:#f8fafc;"><td style="padding:6px 8px;font-weight:700;">Operational Spec</td><td style="padding:6px 8px;">Critical crime scene control, homicide response, immediate area lockdown.</td></tr>             <tr><td style="padding:6px 8px;font-weight:700;">Coordinates</td><td style="padding:6px 8px;">13.08327, 80.20312</td></tr>             <tr style="background:#f8fafc;"><td style="padding:6px 8px;font-weight:700;">Risk Score</td><td style="padding:6px 8px;">100.0</td></tr>         </table>     </div>     </div>`)[0];
+                popup_67f9dedbb2b4ac97e59a1115574f3714.setContent(html_d11603367fc1eee5a7ab34999e4dfe37);
+            
+        
+
+        circle_marker_1fd28c0aa516eec671b4b915d8b3e66a.bindPopup(popup_67f9dedbb2b4ac97e59a1115574f3714)
+        ;
+
+        
+    
+    
+            circle_marker_1fd28c0aa516eec671b4b915d8b3e66a.bindTooltip(
+                `<div>
+                     Murder | Bus Stand, Anna Nagar, Chennai
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_96582333d6188197a23e9370c56e55b0 = L.circleMarker(
+                [13.088977, 80.213582],
+                {"bubblingMouseEvents": true, "color": "#ffffff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#991b1b", "fillOpacity": 0.92, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 1}
+            ).addTo(map_3fcb0ab0275e6f51ad642ebc721a1c28);
+        
+    
+        var popup_06fa9a89576a523e24e6f7bfdcf15cc8 = L.popup({
+  "maxWidth": 360,
+});
+
+        
+            
+                var html_30d1d611ede15ae3e69f6073b253f314 = $(`<div id="html_30d1d611ede15ae3e69f6073b253f314" style="width: 100.0%; height: 100.0%;">     <div style="min-width:290px;font-family:Segoe UI,sans-serif;">         <h4 style="margin:0 0 10px;color:#0f172a;">Incident Detail</h4>         <div style="display:flex;gap:12px;align-items:flex-start;margin-bottom:10px;">             <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAiIGhlaWdodD0iMTkwIiB2aWV3Qm94PSIwIDAgMTYwIDE5MCI+CiAgICAgIDxyZWN0IHdpZHRoPSIxNjAiIGhlaWdodD0iMTkwIiByeD0iMTQiIGZpbGw9IiNmOGZhZmMiLz4KICAgICAgPHJlY3QgeD0iOCIgeT0iOCIgd2lkdGg9IjE0NCIgaGVpZ2h0PSIxNzQiIHJ4PSIxMiIgZmlsbD0iI2UyZThmMCIgc3Ryb2tlPSIjOTkxYjFiIiBzdHJva2Utd2lkdGg9IjUiLz4KICAgICAgPHJlY3QgeD0iMjAiIHk9IjE4IiB3aWR0aD0iMTIwIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iIzk5MWIxYiIvPgogICAgICA8dGV4dCB4PSI4MCIgeT0iMzkiIGZvbnQtc2l6ZT0iMTYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IndoaXRlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiPkNSSVRJQ0FMPC90ZXh0PgogICAgICA8Y2lyY2xlIGN4PSI4MCIgY3k9Ijg2IiByPSIyOCIgZmlsbD0iIzMzNDE1NSIvPgogICAgICA8cmVjdCB4PSI0OCIgeT0iMTE4IiB3aWR0aD0iNjQiIGhlaWdodD0iNDAiIHJ4PSIxOCIgZmlsbD0iIzMzNDE1NSIvPgogICAgICA8dGV4dCB4PSI4MCIgeT0iMTcxIiBmb250LXNpemU9IjEyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMGYxNzJhIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiPkNDVE5TLTIwMjYtMTA1MjwvdGV4dD4KICAgICAgPHRleHQgeD0iODAiIHk9IjE4NCIgZm9udC1zaXplPSIxMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzQ3NTU2OSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIj5BdHRlbXB0IFRvIE11cmRlcjwvdGV4dD4KICAgIDwvc3ZnPg==" alt="Suspect profile" style="width:96px;height:114px;object-fit:cover;border-radius:10px;border:3px solid #991b1b;background:#fff;" />             <div style="flex:1;padding:8px 10px;background:#eff6ff;border-left:4px solid #991b1b;border-radius:8px;color:#0f172a;">                 <strong>Attempt To Murder</strong><br>Metro Entrance, Anna Nagar, Chennai<br>                 <span style="display:inline-block;margin-top:6px;padding:4px 8px;border-radius:999px;background:#991b1b;color:white;font-size:11px;font-weight:700;">Critical Criticality</span>             </div>         </div>         <table style="width:100%;border-collapse:collapse;font-size:13px;">             <tr><td style="padding:6px 8px;font-weight:700;">FIR Number</td><td style="padding:6px 8px;">CCTNS-2026-1052</td></tr>             <tr style="background:#f8fafc;"><td style="padding:6px 8px;font-weight:700;">Police Station</td><td style="padding:6px 8px;">Anna Nagar Police Station</td></tr>             <tr><td style="padding:6px 8px;font-weight:700;">Incident Date</td><td style="padding:6px 8px;">2026-02-21</td></tr>             <tr style="background:#f8fafc;"><td style="padding:6px 8px;font-weight:700;">Time Slot</td><td style="padding:6px 8px;">Evening</td></tr>             <tr><td style="padding:6px 8px;font-weight:700;">IPC Section</td><td style="padding:6px 8px;">IPC 307</td></tr>             <tr style="background:#f8fafc;"><td style="padding:6px 8px;font-weight:700;">People</td><td style="padding:6px 8px;">family dispute between 3 persons</td></tr>             <tr><td style="padding:6px 8px;font-weight:700;">Victims / Suspects</td><td style="padding:6px 8px;">2 / 4</td></tr>             <tr style="background:#f8fafc;"><td style="padding:6px 8px;font-weight:700;">Status</td><td style="padding:6px 8px;">Registered</td></tr>             <tr><td style="padding:6px 8px;font-weight:700;">Criticality</td><td style="padding:6px 8px;">Critical</td></tr>             <tr style="background:#f8fafc;"><td style="padding:6px 8px;font-weight:700;">Operational Spec</td><td style="padding:6px 8px;">Priority response, victim protection, armed suspect lookout.</td></tr>             <tr><td style="padding:6px 8px;font-weight:700;">Coordinates</td><td style="padding:6px 8px;">13.08898, 80.21358</td></tr>             <tr style="background:#f8fafc;"><td style="padding:6px 8px;font-weight:700;">Risk Score</td><td style="padding:6px 8px;">92.0</td></tr>         </table>     </div>     </div>`)[0];
+                popup_06fa9a89576a523e24e6f7bfdcf15cc8.setContent(html_30d1d611ede15ae3e69f6073b253f314);
+            
+        
+
+        circle_marker_96582333d6188197a23e9370c56e55b0.bindPopup(popup_06fa9a89576a523e24e6f7bfdcf15cc8)
+        ;
+
+        
+    
+    
+            circle_marker_96582333d6188197a23e9370c56e55b0.bindTooltip(
+                `<div>
+                     Attempt To Murder | Metro Entrance, Anna Nagar, Chennai
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_0eb57eec10caddbae9a3534a078dec7e = L.circleMarker(
+                [13.081085, 80.209056],
+                {"bubblingMouseEvents": true, "color": "#ffffff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f59e0b", "fillOpacity": 0.92, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_3fcb0ab0275e6f51ad642ebc721a1c28);
+        
+    
+        var popup_0574f22e8f1f24354ba20427b18c0e75 = L.popup({
+  "maxWidth": 360,
+});
+
+        
+            
+                var html_49a4bce3fb9638dbb20b103b592988d7 = $(`<div id="html_49a4bce3fb9638dbb20b103b592988d7" style="width: 100.0%; height: 100.0%;">     <div style="min-width:290px;font-family:Segoe UI,sans-serif;">         <h4 style="margin:0 0 10px;color:#0f172a;">Incident Detail</h4>         <div style="display:flex;gap:12px;align-items:flex-start;margin-bottom:10px;">             <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAiIGhlaWdodD0iMTkwIiB2aWV3Qm94PSIwIDAgMTYwIDE5MCI+CiAgICAgIDxyZWN0IHdpZHRoPSIxNjAiIGhlaWdodD0iMTkwIiByeD0iMTQiIGZpbGw9IiNmOGZhZmMiLz4KICAgICAgPHJlY3QgeD0iOCIgeT0iOCIgd2lkdGg9IjE0NCIgaGVpZ2h0PSIxNzQiIHJ4PSIxMiIgZmlsbD0iI2UyZThmMCIgc3Ryb2tlPSIjZjU5ZTBiIiBzdHJva2Utd2lkdGg9IjUiLz4KICAgICAgPHJlY3QgeD0iMjAiIHk9IjE4IiB3aWR0aD0iMTIwIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iI2Y1OWUwYiIvPgogICAgICA8dGV4dCB4PSI4MCIgeT0iMzkiIGZvbnQtc2l6ZT0iMTYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IndoaXRlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiPk1FRElVTTwvdGV4dD4KICAgICAgPGNpcmNsZSBjeD0iODAiIGN5PSI4NiIgcj0iMjgiIGZpbGw9IiMzMzQxNTUiLz4KICAgICAgPHJlY3QgeD0iNDgiIHk9IjExOCIgd2lkdGg9IjY0IiBoZWlnaHQ9IjQwIiByeD0iMTgiIGZpbGw9IiMzMzQxNTUiLz4KICAgICAgPHRleHQgeD0iODAiIHk9IjE3MSIgZm9udC1zaXplPSIxMiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzBmMTcyYSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNzAwIj5DQ1ROUy0yMDI2LTEwMjA8L3RleHQ+CiAgICAgIDx0ZXh0IHg9IjgwIiB5PSIxODQiIGZvbnQtc2l6ZT0iMTAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM0NzU1NjkiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiI+RHJ1ZyBPZmZlbmNlPC90ZXh0PgogICAgPC9zdmc+" alt="Suspect profile" style="width:96px;height:114px;object-fit:cover;border-radius:10px;border:3px solid #f59e0b;background:#fff;" />             <div style="flex:1;padding:8px 10px;background:#eff6ff;border-left:4px solid #f59e0b;border-radius:8px;color:#0f172a;">                 <strong>Drug Offence</strong><br>Mall Signal, Anna Nagar, Chennai<br>                 <span style="display:inline-block;margin-top:6px;padding:4px 8px;border-radius:999px;background:#f59e0b;color:white;font-size:11px;font-weight:700;">Medium Criticality</span>             </div>         </div>         <table style="width:100%;border-collapse:collapse;font-size:13px;">             <tr><td style="padding:6px 8px;font-weight:700;">FIR Number</td><td style="padding:6px 8px;">CCTNS-2026-1020</td></tr>             <tr style="background:#f8fafc;"><td style="padding:6px 8px;font-weight:700;">Police Station</td><td style="padding:6px 8px;">Anna Nagar Police Station</td></tr>             <tr><td style="padding:6px 8px;font-weight:700;">Incident Date</td><td style="padding:6px 8px;">2026-01-20</td></tr>             <tr style="background:#f8fafc;"><td style="padding:6px 8px;font-weight:700;">Time Slot</td><td style="padding:6px 8px;">Morning</td></tr>             <tr><td style="padding:6px 8px;font-weight:700;">IPC Section</td><td style="padding:6px 8px;">NDPS Act</td></tr>             <tr style="background:#f8fafc;"><td style="padding:6px 8px;font-weight:700;">People</td><td style="padding:6px 8px;">1 complainant, 1 suspect</td></tr>             <tr><td style="padding:6px 8px;font-weight:700;">Victims / Suspects</td><td style="padding:6px 8px;">2 / 2</td></tr>             <tr style="background:#f8fafc;"><td style="padding:6px 8px;font-weight:700;">Status</td><td style="padding:6px 8px;">Under Investigation</td></tr>             <tr><td style="padding:6px 8px;font-weight:700;">Criticality</td><td style="padding:6px 8px;">Medium</td></tr>             <tr style="background:#f8fafc;"><td style="padding:6px 8px;font-weight:700;">Operational Spec</td><td style="padding:6px 8px;">Supply-route monitoring, repeat-location patrols, covert observation.</td></tr>             <tr><td style="padding:6px 8px;font-weight:700;">Coordinates</td><td style="padding:6px 8px;">13.08108, 80.20906</td></tr>             <tr style="background:#f8fafc;"><td style="padding:6px 8px;font-weight:700;">Risk Score</td><td style="padding:6px 8px;">76.0</td></tr>         </table>     </div>     </div>`)[0];
+                popup_0574f22e8f1f24354ba20427b18c0e75.setContent(html_49a4bce3fb9638dbb20b103b592988d7);
+            
+        
+
+        circle_marker_0eb57eec10caddbae9a3534a078dec7e.bindPopup(popup_0574f22e8f1f24354ba20427b18c0e75)
+        ;
+
+        
+    
+    
+            circle_marker_0eb57eec10caddbae9a3534a078dec7e.bindTooltip(
+                `<div>
+                     Drug Offence | Mall Signal, Anna Nagar, Chennai
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_4ce0eef2ef90a1a36bbbde55586292b5 = L.circleMarker(
+                [13.08217, 80.216892],
+                {"bubblingMouseEvents": true, "color": "#ffffff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f59e0b", "fillOpacity": 0.92, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_3fcb0ab0275e6f51ad642ebc721a1c28);
+        
+    
+        var popup_9025abb4b3110145f6ab609707f1c143 = L.popup({
+  "maxWidth": 360,
+});
+
+        
+            
+                var html_908a1ebe121fbd55f8a367a9efeb2e2a = $(`<div id="html_908a1ebe121fbd55f8a367a9efeb2e2a" style="width: 100.0%; height: 100.0%;">     <div style="min-width:290px;font-family:Segoe UI,sans-serif;">         <h4 style="margin:0 0 10px;color:#0f172a;">Incident Detail</h4>         <div style="display:flex;gap:12px;align-items:flex-start;margin-bottom:10px;">             <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAiIGhlaWdodD0iMTkwIiB2aWV3Qm94PSIwIDAgMTYwIDE5MCI+CiAgICAgIDxyZWN0IHdpZHRoPSIxNjAiIGhlaWdodD0iMTkwIiByeD0iMTQiIGZpbGw9IiNmOGZhZmMiLz4KICAgICAgPHJlY3QgeD0iOCIgeT0iOCIgd2lkdGg9IjE0NCIgaGVpZ2h0PSIxNzQiIHJ4PSIxMiIgZmlsbD0iI2UyZThmMCIgc3Ryb2tlPSIjZjU5ZTBiIiBzdHJva2Utd2lkdGg9IjUiLz4KICAgICAgPHJlY3QgeD0iMjAiIHk9IjE4IiB3aWR0aD0iMTIwIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iI2Y1OWUwYiIvPgogICAgICA8dGV4dCB4PSI4MCIgeT0iMzkiIGZvbnQtc2l6ZT0iMTYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IndoaXRlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiPk1FRElVTTwvdGV4dD4KICAgICAgPGNpcmNsZSBjeD0iODAiIGN5PSI4NiIgcj0iMjgiIGZpbGw9IiMzMzQxNTUiLz4KICAgICAgPHJlY3QgeD0iNDgiIHk9IjExOCIgd2lkdGg9IjY0IiBoZWlnaHQ9IjQwIiByeD0iMTgiIGZpbGw9IiMzMzQxNTUiLz4KICAgICAgPHRleHQgeD0iODAiIHk9IjE3MSIgZm9udC1zaXplPSIxMiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzBmMTcyYSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNzAwIj5DQ1ROUy0yMDI2LTEwNjA8L3RleHQ+CiAgICAgIDx0ZXh0IHg9IjgwIiB5PSIxODQiIGZvbnQtc2l6ZT0iMTAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM0NzU1NjkiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiI+RHJ1ZyBPZmZlbmNlPC90ZXh0PgogICAgPC9zdmc+" alt="Suspect profile" style="width:96px;height:114px;object-fit:cover;border-radius:10px;border:3px solid #f59e0b;background:#fff;" />             <div style="flex:1;padding:8px 10px;background:#eff6ff;border-left:4px solid #f59e0b;border-radius:8px;color:#0f172a;">                 <strong>Drug Offence</strong><br>Hospital Junction, Anna Nagar, Chennai<br>                 <span style="display:inline-block;margin-top:6px;padding:4px 8px;border-radius:999px;background:#f59e0b;color:white;font-size:11px;font-weight:700;">Medium Criticality</span>             </div>         </div>         <table style="width:100%;border-collapse:collapse;font-size:13px;">             <tr><td style="padding:6px 8px;font-weight:700;">FIR Number</td><td style="padding:6px 8px;">CCTNS-2026-1060</td></tr>             <tr style="background:#f8fafc;"><td style="padding:6px 8px;font-weight:700;">Police Station</td><td style="padding:6px 8px;">Anna Nagar Police Station</td></tr>             <tr><td style="padding:6px 8px;font-weight:700;">Incident Date</td><td style="padding:6px 8px;">2026-03-01</td></tr>             <tr style="background:#f8fafc;"><td style="padding:6px 8px;font-weight:700;">Time Slot</td><td style="padding:6px 8px;">Late Night</td></tr>             <tr><td style="padding:6px 8px;font-weight:700;">IPC Section</td><td style="padding:6px 8px;">NDPS Act</td></tr>             <tr style="background:#f8fafc;"><td style="padding:6px 8px;font-weight:700;">People</td><td style="padding:6px 8px;">woman complainant, 1 accused</td></tr>             <tr><td style="padding:6px 8px;font-weight:700;">Victims / Suspects</td><td style="padding:6px 8px;">2 / 2</td></tr>             <tr style="background:#f8fafc;"><td style="padding:6px 8px;font-weight:700;">Status</td><td style="padding:6px 8px;">Charge Sheet Filed</td></tr>             <tr><td style="padding:6px 8px;font-weight:700;">Criticality</td><td style="padding:6px 8px;">Medium</td></tr>             <tr style="background:#f8fafc;"><td style="padding:6px 8px;font-weight:700;">Operational Spec</td><td style="padding:6px 8px;">Supply-route monitoring, repeat-location patrols, covert observation.</td></tr>             <tr><td style="padding:6px 8px;font-weight:700;">Coordinates</td><td style="padding:6px 8px;">13.08217, 80.21689</td></tr>             <tr style="background:#f8fafc;"><td style="padding:6px 8px;font-weight:700;">Risk Score</td><td style="padding:6px 8px;">86.0</td></tr>         </table>     </div>     </div>`)[0];
+                popup_9025abb4b3110145f6ab609707f1c143.setContent(html_908a1ebe121fbd55f8a367a9efeb2e2a);
+            
+        
+
+        circle_marker_4ce0eef2ef90a1a36bbbde55586292b5.bindPopup(popup_9025abb4b3110145f6ab609707f1c143)
+        ;
+
+        
+    
+    
+            circle_marker_4ce0eef2ef90a1a36bbbde55586292b5.bindTooltip(
+                `<div>
+                     Drug Offence | Hospital Junction, Anna Nagar, Chennai
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_b0d53a4af6b3c1aceb36f327c52557da = L.circleMarker(
+                [13.08453, 80.21428],
+                {"bubblingMouseEvents": true, "color": "#ffffff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f59e0b", "fillOpacity": 0.92, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_3fcb0ab0275e6f51ad642ebc721a1c28);
+        
+    
+        var popup_112013c052b8e1e9366c1e101c847556 = L.popup({
+  "maxWidth": 360,
+});
+
+        
+            
+                var html_c934dec715290d5fbc2dc822e8d0a9c5 = $(`<div id="html_c934dec715290d5fbc2dc822e8d0a9c5" style="width: 100.0%; height: 100.0%;">     <div style="min-width:290px;font-family:Segoe UI,sans-serif;">         <h4 style="margin:0 0 10px;color:#0f172a;">Incident Detail</h4>         <div style="display:flex;gap:12px;align-items:flex-start;margin-bottom:10px;">             <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAiIGhlaWdodD0iMTkwIiB2aWV3Qm94PSIwIDAgMTYwIDE5MCI+CiAgICAgIDxyZWN0IHdpZHRoPSIxNjAiIGhlaWdodD0iMTkwIiByeD0iMTQiIGZpbGw9IiNmOGZhZmMiLz4KICAgICAgPHJlY3QgeD0iOCIgeT0iOCIgd2lkdGg9IjE0NCIgaGVpZ2h0PSIxNzQiIHJ4PSIxMiIgZmlsbD0iI2UyZThmMCIgc3Ryb2tlPSIjZjU5ZTBiIiBzdHJva2Utd2lkdGg9IjUiLz4KICAgICAgPHJlY3QgeD0iMjAiIHk9IjE4IiB3aWR0aD0iMTIwIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iI2Y1OWUwYiIvPgogICAgICA8dGV4dCB4PSI4MCIgeT0iMzkiIGZvbnQtc2l6ZT0iMTYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IndoaXRlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiPk1FRElVTTwvdGV4dD4KICAgICAgPGNpcmNsZSBjeD0iODAiIGN5PSI4NiIgcj0iMjgiIGZpbGw9IiMzMzQxNTUiLz4KICAgICAgPHJlY3QgeD0iNDgiIHk9IjExOCIgd2lkdGg9IjY0IiBoZWlnaHQ9IjQwIiByeD0iMTgiIGZpbGw9IiMzMzQxNTUiLz4KICAgICAgPHRleHQgeD0iODAiIHk9IjE3MSIgZm9udC1zaXplPSIxMiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzBmMTcyYSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNzAwIj5DQ1ROUy0yMDI2LTEwOTI8L3RleHQ+CiAgICAgIDx0ZXh0IHg9IjgwIiB5PSIxODQiIGZvbnQtc2l6ZT0iMTAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM0NzU1NjkiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiI+Um9iYmVyeTwvdGV4dD4KICAgIDwvc3ZnPg==" alt="Suspect profile" style="width:96px;height:114px;object-fit:cover;border-radius:10px;border:3px solid #f59e0b;background:#fff;" />             <div style="flex:1;padding:8px 10px;background:#eff6ff;border-left:4px solid #f59e0b;border-radius:8px;color:#0f172a;">                 <strong>Robbery</strong><br>Hospital Junction, Anna Nagar, Chennai<br>                 <span style="display:inline-block;margin-top:6px;padding:4px 8px;border-radius:999px;background:#f59e0b;color:white;font-size:11px;font-weight:700;">Medium Criticality</span>             </div>         </div>         <table style="width:100%;border-collapse:collapse;font-size:13px;">             <tr><td style="padding:6px 8px;font-weight:700;">FIR Number</td><td style="padding:6px 8px;">CCTNS-2026-1092</td></tr>             <tr style="background:#f8fafc;"><td style="padding:6px 8px;font-weight:700;">Police Station</td><td style="padding:6px 8px;">Anna Nagar Police Station</td></tr>             <tr><td style="padding:6px 8px;font-weight:700;">Incident Date</td><td style="padding:6px 8px;">2026-04-02</td></tr>             <tr style="background:#f8fafc;"><td style="padding:6px 8px;font-weight:700;">Time Slot</td><td style="padding:6px 8px;">Morning</td></tr>             <tr><td style="padding:6px 8px;font-weight:700;">IPC Section</td><td style="padding:6px 8px;">IPC 392</td></tr>             <tr style="background:#f8fafc;"><td style="padding:6px 8px;font-weight:700;">People</td><td style="padding:6px 8px;">family dispute between 3 persons</td></tr>             <tr><td style="padding:6px 8px;font-weight:700;">Victims / Suspects</td><td style="padding:6px 8px;">2 / 3</td></tr>             <tr style="background:#f8fafc;"><td style="padding:6px 8px;font-weight:700;">Status</td><td style="padding:6px 8px;">Under Investigation</td></tr>             <tr><td style="padding:6px 8px;font-weight:700;">Criticality</td><td style="padding:6px 8px;">Medium</td></tr>             <tr style="background:#f8fafc;"><td style="padding:6px 8px;font-weight:700;">Operational Spec</td><td style="padding:6px 8px;">Rapid armed response zone, witness tracing, escape-route blocking.</td></tr>             <tr><td style="padding:6px 8px;font-weight:700;">Coordinates</td><td style="padding:6px 8px;">13.08453, 80.21428</td></tr>             <tr style="background:#f8fafc;"><td style="padding:6px 8px;font-weight:700;">Risk Score</td><td style="padding:6px 8px;">72.0</td></tr>         </table>     </div>     </div>`)[0];
+                popup_112013c052b8e1e9366c1e101c847556.setContent(html_c934dec715290d5fbc2dc822e8d0a9c5);
+            
+        
+
+        circle_marker_b0d53a4af6b3c1aceb36f327c52557da.bindPopup(popup_112013c052b8e1e9366c1e101c847556)
+        ;
+
+        
+    
+    
+            circle_marker_b0d53a4af6b3c1aceb36f327c52557da.bindTooltip(
+                `<div>
+                     Robbery | Hospital Junction, Anna Nagar, Chennai
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_3f974bed849cb11ff4667a7744c685ef = L.circleMarker(
+                [13.082965, 80.202614],
+                {"bubblingMouseEvents": true, "color": "#ffffff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f59e0b", "fillOpacity": 0.92, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_3fcb0ab0275e6f51ad642ebc721a1c28);
+        
+    
+        var popup_7d0e735a7ea5590e06da05c10b7cc4a7 = L.popup({
+  "maxWidth": 360,
+});
+
+        
+            
+                var html_641b20eab054e3960cd802ddc99a20e2 = $(`<div id="html_641b20eab054e3960cd802ddc99a20e2" style="width: 100.0%; height: 100.0%;">     <div style="min-width:290px;font-family:Segoe UI,sans-serif;">         <h4 style="margin:0 0 10px;color:#0f172a;">Incident Detail</h4>         <div style="display:flex;gap:12px;align-items:flex-start;margin-bottom:10px;">             <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAiIGhlaWdodD0iMTkwIiB2aWV3Qm94PSIwIDAgMTYwIDE5MCI+CiAgICAgIDxyZWN0IHdpZHRoPSIxNjAiIGhlaWdodD0iMTkwIiByeD0iMTQiIGZpbGw9IiNmOGZhZmMiLz4KICAgICAgPHJlY3QgeD0iOCIgeT0iOCIgd2lkdGg9IjE0NCIgaGVpZ2h0PSIxNzQiIHJ4PSIxMiIgZmlsbD0iI2UyZThmMCIgc3Ryb2tlPSIjZjU5ZTBiIiBzdHJva2Utd2lkdGg9IjUiLz4KICAgICAgPHJlY3QgeD0iMjAiIHk9IjE4IiB3aWR0aD0iMTIwIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iI2Y1OWUwYiIvPgogICAgICA8dGV4dCB4PSI4MCIgeT0iMzkiIGZvbnQtc2l6ZT0iMTYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IndoaXRlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiPk1FRElVTTwvdGV4dD4KICAgICAgPGNpcmNsZSBjeD0iODAiIGN5PSI4NiIgcj0iMjgiIGZpbGw9IiMzMzQxNTUiLz4KICAgICAgPHJlY3QgeD0iNDgiIHk9IjExOCIgd2lkdGg9IjY0IiBoZWlnaHQ9IjQwIiByeD0iMTgiIGZpbGw9IiMzMzQxNTUiLz4KICAgICAgPHRleHQgeD0iODAiIHk9IjE3MSIgZm9udC1zaXplPSIxMiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzBmMTcyYSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNzAwIj5DQ1ROUy0yMDI2LTEwMTI8L3RleHQ+CiAgICAgIDx0ZXh0IHg9IjgwIiB5PSIxODQiIGZvbnQtc2l6ZT0iMTAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM0NzU1NjkiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiI+Um9iYmVyeTwvdGV4dD4KICAgIDwvc3ZnPg==" alt="Suspect profile" style="width:96px;height:114px;object-fit:cover;border-radius:10px;border:3px solid #f59e0b;background:#fff;" />             <div style="flex:1;padding:8px 10px;background:#eff6ff;border-left:4px solid #f59e0b;border-radius:8px;color:#0f172a;">                 <strong>Robbery</strong><br>Temple Street, Anna Nagar, Chennai<br>                 <span style="display:inline-block;margin-top:6px;padding:4px 8px;border-radius:999px;background:#f59e0b;color:white;font-size:11px;font-weight:700;">Medium Criticality</span>             </div>         </div>         <table style="width:100%;border-collapse:collapse;font-size:13px;">             <tr><td style="padding:6px 8px;font-weight:700;">FIR Number</td><td style="padding:6px 8px;">CCTNS-2026-1012</td></tr>             <tr style="background:#f8fafc;"><td style="padding:6px 8px;font-weight:700;">Police Station</td><td style="padding:6px 8px;">Anna Nagar Police Station</td></tr>             <tr><td style="padding:6px 8px;font-weight:700;">Incident Date</td><td style="padding:6px 8px;">2026-01-12</td></tr>             <tr style="background:#f8fafc;"><td style="padding:6px 8px;font-weight:700;">Time Slot</td><td style="padding:6px 8px;">Late Night</td></tr>             <tr><td style="padding:6px 8px;font-weight:700;">IPC Section</td><td style="padding:6px 8px;">IPC 392</td></tr>             <tr style="background:#f8fafc;"><td style="padding:6px 8px;font-weight:700;">People</td><td style="padding:6px 8px;">pedestrian and 2 suspects</td></tr>             <tr><td style="padding:6px 8px;font-weight:700;">Victims / Suspects</td><td style="padding:6px 8px;">2 / 1</td></tr>             <tr style="background:#f8fafc;"><td style="padding:6px 8px;font-weight:700;">Status</td><td style="padding:6px 8px;">Charge Sheet Filed</td></tr>             <tr><td style="padding:6px 8px;font-weight:700;">Criticality</td><td style="padding:6px 8px;">Medium</td></tr>             <tr style="background:#f8fafc;"><td style="padding:6px 8px;font-weight:700;">Operational Spec</td><td style="padding:6px 8px;">Rapid armed response zone, witness tracing, escape-route blocking.</td></tr>             <tr><td style="padding:6px 8px;font-weight:700;">Coordinates</td><td style="padding:6px 8px;">13.08296, 80.20261</td></tr>             <tr style="background:#f8fafc;"><td style="padding:6px 8px;font-weight:700;">Risk Score</td><td style="padding:6px 8px;">82.0</td></tr>         </table>     </div>     </div>`)[0];
+                popup_7d0e735a7ea5590e06da05c10b7cc4a7.setContent(html_641b20eab054e3960cd802ddc99a20e2);
+            
+        
+
+        circle_marker_3f974bed849cb11ff4667a7744c685ef.bindPopup(popup_7d0e735a7ea5590e06da05c10b7cc4a7)
+        ;
+
+        
+    
+    
+            circle_marker_3f974bed849cb11ff4667a7744c685ef.bindTooltip(
+                `<div>
+                     Robbery | Temple Street, Anna Nagar, Chennai
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_8afd6d1bc36eacdfccfe685a4e36f5f2 = L.circleMarker(
+                [13.085128, 80.20322],
+                {"bubblingMouseEvents": true, "color": "#ffffff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f59e0b", "fillOpacity": 0.92, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_3fcb0ab0275e6f51ad642ebc721a1c28);
+        
+    
+        var popup_522399b4d47fc784755864a0d98dd096 = L.popup({
+  "maxWidth": 360,
+});
+
+        
+            
+                var html_eef9aaad457c62171977e14e44e88133 = $(`<div id="html_eef9aaad457c62171977e14e44e88133" style="width: 100.0%; height: 100.0%;">     <div style="min-width:290px;font-family:Segoe UI,sans-serif;">         <h4 style="margin:0 0 10px;color:#0f172a;">Incident Detail</h4>         <div style="display:flex;gap:12px;align-items:flex-start;margin-bottom:10px;">             <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAiIGhlaWdodD0iMTkwIiB2aWV3Qm94PSIwIDAgMTYwIDE5MCI+CiAgICAgIDxyZWN0IHdpZHRoPSIxNjAiIGhlaWdodD0iMTkwIiByeD0iMTQiIGZpbGw9IiNmOGZhZmMiLz4KICAgICAgPHJlY3QgeD0iOCIgeT0iOCIgd2lkdGg9IjE0NCIgaGVpZ2h0PSIxNzQiIHJ4PSIxMiIgZmlsbD0iI2UyZThmMCIgc3Ryb2tlPSIjZjU5ZTBiIiBzdHJva2Utd2lkdGg9IjUiLz4KICAgICAgPHJlY3QgeD0iMjAiIHk9IjE4IiB3aWR0aD0iMTIwIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iI2Y1OWUwYiIvPgogICAgICA8dGV4dCB4PSI4MCIgeT0iMzkiIGZvbnQtc2l6ZT0iMTYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IndoaXRlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiPk1FRElVTTwvdGV4dD4KICAgICAgPGNpcmNsZSBjeD0iODAiIGN5PSI4NiIgcj0iMjgiIGZpbGw9IiMzMzQxNTUiLz4KICAgICAgPHJlY3QgeD0iNDgiIHk9IjExOCIgd2lkdGg9IjY0IiBoZWlnaHQ9IjQwIiByeD0iMTgiIGZpbGw9IiMzMzQxNTUiLz4KICAgICAgPHRleHQgeD0iODAiIHk9IjE3MSIgZm9udC1zaXplPSIxMiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzBmMTcyYSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNzAwIj5DQ1ROUy0yMDI2LTEwNjg8L3RleHQ+CiAgICAgIDx0ZXh0IHg9IjgwIiB5PSIxODQiIGZvbnQtc2l6ZT0iMTAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM0NzU1NjkiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiI+RG9tZXN0aWMgVmlvbGVuY2U8L3RleHQ+CiAgICA8L3N2Zz4=" alt="Suspect profile" style="width:96px;height:114px;object-fit:cover;border-radius:10px;border:3px solid #f59e0b;background:#fff;" />             <div style="flex:1;padding:8px 10px;background:#eff6ff;border-left:4px solid #f59e0b;border-radius:8px;color:#0f172a;">                 <strong>Domestic Violence</strong><br>Temple Street, Anna Nagar, Chennai<br>                 <span style="display:inline-block;margin-top:6px;padding:4px 8px;border-radius:999px;background:#f59e0b;color:white;font-size:11px;font-weight:700;">Medium Criticality</span>             </div>         </div>         <table style="width:100%;border-collapse:collapse;font-size:13px;">             <tr><td style="padding:6px 8px;font-weight:700;">FIR Number</td><td style="padding:6px 8px;">CCTNS-2026-1068</td></tr>             <tr style="background:#f8fafc;"><td style="padding:6px 8px;font-weight:700;">Police Station</td><td style="padding:6px 8px;">Anna Nagar Police Station</td></tr>             <tr><td style="padding:6px 8px;font-weight:700;">Incident Date</td><td style="padding:6px 8px;">2026-03-09</td></tr>             <tr style="background:#f8fafc;"><td style="padding:6px 8px;font-weight:700;">Time Slot</td><td style="padding:6px 8px;">Morning</td></tr>             <tr><td style="padding:6px 8px;font-weight:700;">IPC Section</td><td style="padding:6px 8px;">DV Act</td></tr>             <tr style="background:#f8fafc;"><td style="padding:6px 8px;font-weight:700;">People</td><td style="padding:6px 8px;">2 riders involved</td></tr>             <tr><td style="padding:6px 8px;font-weight:700;">Victims / Suspects</td><td style="padding:6px 8px;">1 / 3</td></tr>             <tr style="background:#f8fafc;"><td style="padding:6px 8px;font-weight:700;">Status</td><td style="padding:6px 8px;">Under Investigation</td></tr>             <tr><td style="padding:6px 8px;font-weight:700;">Criticality</td><td style="padding:6px 8px;">Medium</td></tr>             <tr style="background:#f8fafc;"><td style="padding:6px 8px;font-weight:700;">Operational Spec</td><td style="padding:6px 8px;">Immediate welfare response, protection order follow-up, high-repeat risk monitoring.</td></tr>             <tr><td style="padding:6px 8px;font-weight:700;">Coordinates</td><td style="padding:6px 8px;">13.08513, 80.20322</td></tr>             <tr style="background:#f8fafc;"><td style="padding:6px 8px;font-weight:700;">Risk Score</td><td style="padding:6px 8px;">72.0</td></tr>         </table>     </div>     </div>`)[0];
+                popup_522399b4d47fc784755864a0d98dd096.setContent(html_eef9aaad457c62171977e14e44e88133);
+            
+        
+
+        circle_marker_8afd6d1bc36eacdfccfe685a4e36f5f2.bindPopup(popup_522399b4d47fc784755864a0d98dd096)
+        ;
+
+        
+    
+    
+            circle_marker_8afd6d1bc36eacdfccfe685a4e36f5f2.bindTooltip(
+                `<div>
+                     Domestic Violence | Temple Street, Anna Nagar, Chennai
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_f2401063d51e90d08ee968fcd4e90af1 = L.circleMarker(
+                [13.086587, 80.216278],
+                {"bubblingMouseEvents": true, "color": "#ffffff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f59e0b", "fillOpacity": 0.92, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_3fcb0ab0275e6f51ad642ebc721a1c28);
+        
+    
+        var popup_326a69493878551099bc47c88fc40dea = L.popup({
+  "maxWidth": 360,
+});
+
+        
+            
+                var html_b1f5242b376be281b63483df0764ffa1 = $(`<div id="html_b1f5242b376be281b63483df0764ffa1" style="width: 100.0%; height: 100.0%;">     <div style="min-width:290px;font-family:Segoe UI,sans-serif;">         <h4 style="margin:0 0 10px;color:#0f172a;">Incident Detail</h4>         <div style="display:flex;gap:12px;align-items:flex-start;margin-bottom:10px;">             <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAiIGhlaWdodD0iMTkwIiB2aWV3Qm94PSIwIDAgMTYwIDE5MCI+CiAgICAgIDxyZWN0IHdpZHRoPSIxNjAiIGhlaWdodD0iMTkwIiByeD0iMTQiIGZpbGw9IiNmOGZhZmMiLz4KICAgICAgPHJlY3QgeD0iOCIgeT0iOCIgd2lkdGg9IjE0NCIgaGVpZ2h0PSIxNzQiIHJ4PSIxMiIgZmlsbD0iI2UyZThmMCIgc3Ryb2tlPSIjZjU5ZTBiIiBzdHJva2Utd2lkdGg9IjUiLz4KICAgICAgPHJlY3QgeD0iMjAiIHk9IjE4IiB3aWR0aD0iMTIwIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iI2Y1OWUwYiIvPgogICAgICA8dGV4dCB4PSI4MCIgeT0iMzkiIGZvbnQtc2l6ZT0iMTYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IndoaXRlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiPk1FRElVTTwvdGV4dD4KICAgICAgPGNpcmNsZSBjeD0iODAiIGN5PSI4NiIgcj0iMjgiIGZpbGw9IiMzMzQxNTUiLz4KICAgICAgPHJlY3QgeD0iNDgiIHk9IjExOCIgd2lkdGg9IjY0IiBoZWlnaHQ9IjQwIiByeD0iMTgiIGZpbGw9IiMzMzQxNTUiLz4KICAgICAgPHRleHQgeD0iODAiIHk9IjE3MSIgZm9udC1zaXplPSIxMiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzBmMTcyYSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNzAwIj5DQ1ROUy0yMDI2LTEwNzY8L3RleHQ+CiAgICAgIDx0ZXh0IHg9IjgwIiB5PSIxODQiIGZvbnQtc2l6ZT0iMTAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM0NzU1NjkiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiI+SGFyYXNzbWVudDwvdGV4dD4KICAgIDwvc3ZnPg==" alt="Suspect profile" style="width:96px;height:114px;object-fit:cover;border-radius:10px;border:3px solid #f59e0b;background:#fff;" />             <div style="flex:1;padding:8px 10px;background:#eff6ff;border-left:4px solid #f59e0b;border-radius:8px;color:#0f172a;">                 <strong>Harassment</strong><br>Station Approach, Anna Nagar, Chennai<br>                 <span style="display:inline-block;margin-top:6px;padding:4px 8px;border-radius:999px;background:#f59e0b;color:white;font-size:11px;font-weight:700;">Medium Criticality</span>             </div>         </div>         <table style="width:100%;border-collapse:collapse;font-size:13px;">             <tr><td style="padding:6px 8px;font-weight:700;">FIR Number</td><td style="padding:6px 8px;">CCTNS-2026-1076</td></tr>             <tr style="background:#f8fafc;"><td style="padding:6px 8px;font-weight:700;">Police Station</td><td style="padding:6px 8px;">Anna Nagar Police Station</td></tr>             <tr><td style="padding:6px 8px;font-weight:700;">Incident Date</td><td style="padding:6px 8px;">2026-03-17</td></tr>             <tr style="background:#f8fafc;"><td style="padding:6px 8px;font-weight:700;">Time Slot</td><td style="padding:6px 8px;">Evening</td></tr>             <tr><td style="padding:6px 8px;font-weight:700;">IPC Section</td><td style="padding:6px 8px;">IPC 354A</td></tr>             <tr style="background:#f8fafc;"><td style="padding:6px 8px;font-weight:700;">People</td><td style="padding:6px 8px;">woman complainant, 1 accused</td></tr>             <tr><td style="padding:6px 8px;font-weight:700;">Victims / Suspects</td><td style="padding:6px 8px;">2 / 4</td></tr>             <tr style="background:#f8fafc;"><td style="padding:6px 8px;font-weight:700;">Status</td><td style="padding:6px 8px;">Registered</td></tr>             <tr><td style="padding:6px 8px;font-weight:700;">Criticality</td><td style="padding:6px 8px;">Medium</td></tr>             <tr style="background:#f8fafc;"><td style="padding:6px 8px;font-weight:700;">Operational Spec</td><td style="padding:6px 8px;">Victim-support patrol, repeated-complaint tracking, hotspot deterrence.</td></tr>             <tr><td style="padding:6px 8px;font-weight:700;">Coordinates</td><td style="padding:6px 8px;">13.08659, 80.21628</td></tr>             <tr style="background:#f8fafc;"><td style="padding:6px 8px;font-weight:700;">Risk Score</td><td style="padding:6px 8px;">64.0</td></tr>         </table>     </div>     </div>`)[0];
+                popup_326a69493878551099bc47c88fc40dea.setContent(html_b1f5242b376be281b63483df0764ffa1);
+            
+        
+
+        circle_marker_f2401063d51e90d08ee968fcd4e90af1.bindPopup(popup_326a69493878551099bc47c88fc40dea)
+        ;
+
+        
+    
+    
+            circle_marker_f2401063d51e90d08ee968fcd4e90af1.bindTooltip(
+                `<div>
+                     Harassment | Station Approach, Anna Nagar, Chennai
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_c8785238eb6133186deb0f379f1c2fa4 = L.circleMarker(
+                [13.083297, 80.216872],
+                {"bubblingMouseEvents": true, "color": "#ffffff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f59e0b", "fillOpacity": 0.92, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_3fcb0ab0275e6f51ad642ebc721a1c28);
+        
+    
+        var popup_05d3869438158479020e96cae8823576 = L.popup({
+  "maxWidth": 360,
+});
+
+        
+            
+                var html_bf480e3d222280ef8366dd6e4a244e93 = $(`<div id="html_bf480e3d222280ef8366dd6e4a244e93" style="width: 100.0%; height: 100.0%;">     <div style="min-width:290px;font-family:Segoe UI,sans-serif;">         <h4 style="margin:0 0 10px;color:#0f172a;">Incident Detail</h4>         <div style="display:flex;gap:12px;align-items:flex-start;margin-bottom:10px;">             <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAiIGhlaWdodD0iMTkwIiB2aWV3Qm94PSIwIDAgMTYwIDE5MCI+CiAgICAgIDxyZWN0IHdpZHRoPSIxNjAiIGhlaWdodD0iMTkwIiByeD0iMTQiIGZpbGw9IiNmOGZhZmMiLz4KICAgICAgPHJlY3QgeD0iOCIgeT0iOCIgd2lkdGg9IjE0NCIgaGVpZ2h0PSIxNzQiIHJ4PSIxMiIgZmlsbD0iI2UyZThmMCIgc3Ryb2tlPSIjZjU5ZTBiIiBzdHJva2Utd2lkdGg9IjUiLz4KICAgICAgPHJlY3QgeD0iMjAiIHk9IjE4IiB3aWR0aD0iMTIwIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iI2Y1OWUwYiIvPgogICAgICA8dGV4dCB4PSI4MCIgeT0iMzkiIGZvbnQtc2l6ZT0iMTYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IndoaXRlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiPk1FRElVTTwvdGV4dD4KICAgICAgPGNpcmNsZSBjeD0iODAiIGN5PSI4NiIgcj0iMjgiIGZpbGw9IiMzMzQxNTUiLz4KICAgICAgPHJlY3QgeD0iNDgiIHk9IjExOCIgd2lkdGg9IjY0IiBoZWlnaHQ9IjQwIiByeD0iMTgiIGZpbGw9IiMzMzQxNTUiLz4KICAgICAgPHRleHQgeD0iODAiIHk9IjE3MSIgZm9udC1zaXplPSIxMiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzBmMTcyYSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNzAwIj5DQ1ROUy0yMDI2LTEwMzY8L3RleHQ+CiAgICAgIDx0ZXh0IHg9IjgwIiB5PSIxODQiIGZvbnQtc2l6ZT0iMTAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM0NzU1NjkiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiI+SGFyYXNzbWVudDwvdGV4dD4KICAgIDwvc3ZnPg==" alt="Suspect profile" style="width:96px;height:114px;object-fit:cover;border-radius:10px;border:3px solid #f59e0b;background:#fff;" />             <div style="flex:1;padding:8px 10px;background:#eff6ff;border-left:4px solid #f59e0b;border-radius:8px;color:#0f172a;">                 <strong>Harassment</strong><br>Mall Signal, Anna Nagar, Chennai<br>                 <span style="display:inline-block;margin-top:6px;padding:4px 8px;border-radius:999px;background:#f59e0b;color:white;font-size:11px;font-weight:700;">Medium Criticality</span>             </div>         </div>         <table style="width:100%;border-collapse:collapse;font-size:13px;">             <tr><td style="padding:6px 8px;font-weight:700;">FIR Number</td><td style="padding:6px 8px;">CCTNS-2026-1036</td></tr>             <tr style="background:#f8fafc;"><td style="padding:6px 8px;font-weight:700;">Police Station</td><td style="padding:6px 8px;">Anna Nagar Police Station</td></tr>             <tr><td style="padding:6px 8px;font-weight:700;">Incident Date</td><td style="padding:6px 8px;">2026-02-05</td></tr>             <tr style="background:#f8fafc;"><td style="padding:6px 8px;font-weight:700;">Time Slot</td><td style="padding:6px 8px;">Late Night</td></tr>             <tr><td style="padding:6px 8px;font-weight:700;">IPC Section</td><td style="padding:6px 8px;">IPC 354A</td></tr>             <tr style="background:#f8fafc;"><td style="padding:6px 8px;font-weight:700;">People</td><td style="padding:6px 8px;">2 victims, 2 suspects</td></tr>             <tr><td style="padding:6px 8px;font-weight:700;">Victims / Suspects</td><td style="padding:6px 8px;">1 / 1</td></tr>             <tr style="background:#f8fafc;"><td style="padding:6px 8px;font-weight:700;">Status</td><td style="padding:6px 8px;">Charge Sheet Filed</td></tr>             <tr><td style="padding:6px 8px;font-weight:700;">Criticality</td><td style="padding:6px 8px;">Medium</td></tr>             <tr style="background:#f8fafc;"><td style="padding:6px 8px;font-weight:700;">Operational Spec</td><td style="padding:6px 8px;">Victim-support patrol, repeated-complaint tracking, hotspot deterrence.</td></tr>             <tr><td style="padding:6px 8px;font-weight:700;">Coordinates</td><td style="padding:6px 8px;">13.0833, 80.21687</td></tr>             <tr style="background:#f8fafc;"><td style="padding:6px 8px;font-weight:700;">Risk Score</td><td style="padding:6px 8px;">74.0</td></tr>         </table>     </div>     </div>`)[0];
+                popup_05d3869438158479020e96cae8823576.setContent(html_bf480e3d222280ef8366dd6e4a244e93);
+            
+        
+
+        circle_marker_c8785238eb6133186deb0f379f1c2fa4.bindPopup(popup_05d3869438158479020e96cae8823576)
+        ;
+
+        
+    
+    
+            circle_marker_c8785238eb6133186deb0f379f1c2fa4.bindTooltip(
+                `<div>
+                     Harassment | Mall Signal, Anna Nagar, Chennai
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_fd60e3c12cffd7abf0190e84263fede3 = L.circleMarker(
+                [13.082827, 80.211528],
+                {"bubblingMouseEvents": true, "color": "#ffffff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f59e0b", "fillOpacity": 0.92, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_3fcb0ab0275e6f51ad642ebc721a1c28);
+        
+    
+        var popup_3539df271b91c587211698d6df38848c = L.popup({
+  "maxWidth": 360,
+});
+
+        
+            
+                var html_d70552704583be2014dc7b6bca61abf8 = $(`<div id="html_d70552704583be2014dc7b6bca61abf8" style="width: 100.0%; height: 100.0%;">     <div style="min-width:290px;font-family:Segoe UI,sans-serif;">         <h4 style="margin:0 0 10px;color:#0f172a;">Incident Detail</h4>         <div style="display:flex;gap:12px;align-items:flex-start;margin-bottom:10px;">             <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAiIGhlaWdodD0iMTkwIiB2aWV3Qm94PSIwIDAgMTYwIDE5MCI+CiAgICAgIDxyZWN0IHdpZHRoPSIxNjAiIGhlaWdodD0iMTkwIiByeD0iMTQiIGZpbGw9IiNmOGZhZmMiLz4KICAgICAgPHJlY3QgeD0iOCIgeT0iOCIgd2lkdGg9IjE0NCIgaGVpZ2h0PSIxNzQiIHJ4PSIxMiIgZmlsbD0iI2UyZThmMCIgc3Ryb2tlPSIjZjU5ZTBiIiBzdHJva2Utd2lkdGg9IjUiLz4KICAgICAgPHJlY3QgeD0iMjAiIHk9IjE4IiB3aWR0aD0iMTIwIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iI2Y1OWUwYiIvPgogICAgICA8dGV4dCB4PSI4MCIgeT0iMzkiIGZvbnQtc2l6ZT0iMTYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IndoaXRlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiPk1FRElVTTwvdGV4dD4KICAgICAgPGNpcmNsZSBjeD0iODAiIGN5PSI4NiIgcj0iMjgiIGZpbGw9IiMzMzQxNTUiLz4KICAgICAgPHJlY3QgeD0iNDgiIHk9IjExOCIgd2lkdGg9IjY0IiBoZWlnaHQ9IjQwIiByeD0iMTgiIGZpbGw9IiMzMzQxNTUiLz4KICAgICAgPHRleHQgeD0iODAiIHk9IjE3MSIgZm9udC1zaXplPSIxMiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzBmMTcyYSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNzAwIj5DQ1ROUy0yMDI2LTEwMDQ8L3RleHQ+CiAgICAgIDx0ZXh0IHg9IjgwIiB5PSIxODQiIGZvbnQtc2l6ZT0iMTAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM0NzU1NjkiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiI+QnVyZ2xhcnk8L3RleHQ+CiAgICA8L3N2Zz4=" alt="Suspect profile" style="width:96px;height:114px;object-fit:cover;border-radius:10px;border:3px solid #f59e0b;background:#fff;" />             <div style="flex:1;padding:8px 10px;background:#eff6ff;border-left:4px solid #f59e0b;border-radius:8px;color:#0f172a;">                 <strong>Burglary</strong><br>Bus Stand, Anna Nagar, Chennai<br>                 <span style="display:inline-block;margin-top:6px;padding:4px 8px;border-radius:999px;background:#f59e0b;color:white;font-size:11px;font-weight:700;">Medium Criticality</span>             </div>         </div>         <table style="width:100%;border-collapse:collapse;font-size:13px;">             <tr><td style="padding:6px 8px;font-weight:700;">FIR Number</td><td style="padding:6px 8px;">CCTNS-2026-1004</td></tr>             <tr style="background:#f8fafc;"><td style="padding:6px 8px;font-weight:700;">Police Station</td><td style="padding:6px 8px;">Anna Nagar Police Station</td></tr>             <tr><td style="padding:6px 8px;font-weight:700;">Incident Date</td><td style="padding:6px 8px;">2026-01-04</td></tr>             <tr style="background:#f8fafc;"><td style="padding:6px 8px;font-weight:700;">Time Slot</td><td style="padding:6px 8px;">Evening</td></tr>             <tr><td style="padding:6px 8px;font-weight:700;">IPC Section</td><td style="padding:6px 8px;">IPC 457</td></tr>             <tr style="background:#f8fafc;"><td style="padding:6px 8px;font-weight:700;">People</td><td style="padding:6px 8px;">shop owner and unknown accused</td></tr>             <tr><td style="padding:6px 8px;font-weight:700;">Victims / Suspects</td><td style="padding:6px 8px;">2 / 3</td></tr>             <tr style="background:#f8fafc;"><td style="padding:6px 8px;font-weight:700;">Status</td><td style="padding:6px 8px;">Registered</td></tr>             <tr><td style="padding:6px 8px;font-weight:700;">Criticality</td><td style="padding:6px 8px;">Medium</td></tr>             <tr style="background:#f8fafc;"><td style="padding:6px 8px;font-weight:700;">Operational Spec</td><td style="padding:6px 8px;">Night-time perimeter patrol, door-to-door inquiry, evidence preservation.</td></tr>             <tr><td style="padding:6px 8px;font-weight:700;">Coordinates</td><td style="padding:6px 8px;">13.08283, 80.21153</td></tr>             <tr style="background:#f8fafc;"><td style="padding:6px 8px;font-weight:700;">Risk Score</td><td style="padding:6px 8px;">60.0</td></tr>         </table>     </div>     </div>`)[0];
+                popup_3539df271b91c587211698d6df38848c.setContent(html_d70552704583be2014dc7b6bca61abf8);
+            
+        
+
+        circle_marker_fd60e3c12cffd7abf0190e84263fede3.bindPopup(popup_3539df271b91c587211698d6df38848c)
+        ;
+
+        
+    
+    
+            circle_marker_fd60e3c12cffd7abf0190e84263fede3.bindTooltip(
+                `<div>
+                     Burglary | Bus Stand, Anna Nagar, Chennai
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_33a00dcb44b59331ca76f470c13c4dd0 = L.circleMarker(
+                [13.085429, 80.204545],
+                {"bubblingMouseEvents": true, "color": "#ffffff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f59e0b", "fillOpacity": 0.92, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_3fcb0ab0275e6f51ad642ebc721a1c28);
+        
+    
+        var popup_9f5cf6ce7b06f36d0fe6a7d848d226c8 = L.popup({
+  "maxWidth": 360,
+});
+
+        
+            
+                var html_a383086fc7aee505503b48bdd5f6ff2a = $(`<div id="html_a383086fc7aee505503b48bdd5f6ff2a" style="width: 100.0%; height: 100.0%;">     <div style="min-width:290px;font-family:Segoe UI,sans-serif;">         <h4 style="margin:0 0 10px;color:#0f172a;">Incident Detail</h4>         <div style="display:flex;gap:12px;align-items:flex-start;margin-bottom:10px;">             <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAiIGhlaWdodD0iMTkwIiB2aWV3Qm94PSIwIDAgMTYwIDE5MCI+CiAgICAgIDxyZWN0IHdpZHRoPSIxNjAiIGhlaWdodD0iMTkwIiByeD0iMTQiIGZpbGw9IiNmOGZhZmMiLz4KICAgICAgPHJlY3QgeD0iOCIgeT0iOCIgd2lkdGg9IjE0NCIgaGVpZ2h0PSIxNzQiIHJ4PSIxMiIgZmlsbD0iI2UyZThmMCIgc3Ryb2tlPSIjZjU5ZTBiIiBzdHJva2Utd2lkdGg9IjUiLz4KICAgICAgPHJlY3QgeD0iMjAiIHk9IjE4IiB3aWR0aD0iMTIwIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iI2Y1OWUwYiIvPgogICAgICA8dGV4dCB4PSI4MCIgeT0iMzkiIGZvbnQtc2l6ZT0iMTYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IndoaXRlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiPk1FRElVTTwvdGV4dD4KICAgICAgPGNpcmNsZSBjeD0iODAiIGN5PSI4NiIgcj0iMjgiIGZpbGw9IiMzMzQxNTUiLz4KICAgICAgPHJlY3QgeD0iNDgiIHk9IjExOCIgd2lkdGg9IjY0IiBoZWlnaHQ9IjQwIiByeD0iMTgiIGZpbGw9IiMzMzQxNTUiLz4KICAgICAgPHRleHQgeD0iODAiIHk9IjE3MSIgZm9udC1zaXplPSIxMiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzBmMTcyYSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNzAwIj5DQ1ROUy0yMDI2LTEwODQ8L3RleHQ+CiAgICAgIDx0ZXh0IHg9IjgwIiB5PSIxODQiIGZvbnQtc2l6ZT0iMTAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM0NzU1NjkiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiI+QnVyZ2xhcnk8L3RleHQ+CiAgICA8L3N2Zz4=" alt="Suspect profile" style="width:96px;height:114px;object-fit:cover;border-radius:10px;border:3px solid #f59e0b;background:#fff;" />             <div style="flex:1;padding:8px 10px;background:#eff6ff;border-left:4px solid #f59e0b;border-radius:8px;color:#0f172a;">                 <strong>Burglary</strong><br>Metro Entrance, Anna Nagar, Chennai<br>                 <span style="display:inline-block;margin-top:6px;padding:4px 8px;border-radius:999px;background:#f59e0b;color:white;font-size:11px;font-weight:700;">Medium Criticality</span>             </div>         </div>         <table style="width:100%;border-collapse:collapse;font-size:13px;">             <tr><td style="padding:6px 8px;font-weight:700;">FIR Number</td><td style="padding:6px 8px;">CCTNS-2026-1084</td></tr>             <tr style="background:#f8fafc;"><td style="padding:6px 8px;font-weight:700;">Police Station</td><td style="padding:6px 8px;">Anna Nagar Police Station</td></tr>             <tr><td style="padding:6px 8px;font-weight:700;">Incident Date</td><td style="padding:6px 8px;">2026-03-25</td></tr>             <tr style="background:#f8fafc;"><td style="padding:6px 8px;font-weight:700;">Time Slot</td><td style="padding:6px 8px;">Late Night</td></tr>             <tr><td style="padding:6px 8px;font-weight:700;">IPC Section</td><td style="padding:6px 8px;">IPC 457</td></tr>             <tr style="background:#f8fafc;"><td style="padding:6px 8px;font-weight:700;">People</td><td style="padding:6px 8px;">2 victims, 2 suspects</td></tr>             <tr><td style="padding:6px 8px;font-weight:700;">Victims / Suspects</td><td style="padding:6px 8px;">2 / 4</td></tr>             <tr style="background:#f8fafc;"><td style="padding:6px 8px;font-weight:700;">Status</td><td style="padding:6px 8px;">Charge Sheet Filed</td></tr>             <tr><td style="padding:6px 8px;font-weight:700;">Criticality</td><td style="padding:6px 8px;">Medium</td></tr>             <tr style="background:#f8fafc;"><td style="padding:6px 8px;font-weight:700;">Operational Spec</td><td style="padding:6px 8px;">Night-time perimeter patrol, door-to-door inquiry, evidence preservation.</td></tr>             <tr><td style="padding:6px 8px;font-weight:700;">Coordinates</td><td style="padding:6px 8px;">13.08543, 80.20454</td></tr>             <tr style="background:#f8fafc;"><td style="padding:6px 8px;font-weight:700;">Risk Score</td><td style="padding:6px 8px;">70.0</td></tr>         </table>     </div>     </div>`)[0];
+                popup_9f5cf6ce7b06f36d0fe6a7d848d226c8.setContent(html_a383086fc7aee505503b48bdd5f6ff2a);
+            
+        
+
+        circle_marker_33a00dcb44b59331ca76f470c13c4dd0.bindPopup(popup_9f5cf6ce7b06f36d0fe6a7d848d226c8)
+        ;
+
+        
+    
+    
+            circle_marker_33a00dcb44b59331ca76f470c13c4dd0.bindTooltip(
+                `<div>
+                     Burglary | Metro Entrance, Anna Nagar, Chennai
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var layer_control_adf08907ce61d6256d694063d2297a5a_layers = {
+                base_layers : {
+                    "Street Map" : tile_layer_ade3db4054c2a62b9edc1e5e2014fe1f,
+                    "Satellite View" : tile_layer_bf38be9712865da5a71c67c5a58d15f2,
+                    "Navigation View" : tile_layer_fba010cf7058f7db9fe3ab04ea0d4d12,
+                },
+                overlays :  {
+                },
+            };
+            let layer_control_adf08907ce61d6256d694063d2297a5a = L.control.layers(
+                layer_control_adf08907ce61d6256d694063d2297a5a_layers.base_layers,
+                layer_control_adf08907ce61d6256d694063d2297a5a_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": false,
+  "autoZIndex": true,
+}
+            ).addTo(map_3fcb0ab0275e6f51ad642ebc721a1c28);
+
+        
+</script>
+</html>

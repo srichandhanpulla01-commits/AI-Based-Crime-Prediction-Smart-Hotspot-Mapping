@@ -1,0 +1,102 @@
+fir_number,station_name,incident_date,time,crime_type,section,latitude,longitude,location_name,people,status,victim_count,suspect_count
+CCTNS-2026-1001,Egmore Police Station,2026-01-01,early morning,attempt to murder,IPC 307,13.075431,80.2533,"Residential Street, Egmore, Chennai","woman complainant, 1 accused",Registered,2,2
+CCTNS-2026-1002,Thousand Lights Police Station,2026-01-02,morning,robbery,IPC 392,13.051133,80.25184,"Beach Road, Thousand Lights, Chennai","2 victims, 2 suspects",Under Investigation,2,1
+CCTNS-2026-1003,Teynampet Police Station,2026-01-03,afternoon,assault,IPC 351,13.034277,80.243198,"Beach Road, Teynampet, Chennai","1 complainant, 1 suspect",Charge Sheet Filed,1,4
+CCTNS-2026-1004,Anna Nagar Police Station,2026-01-04,evening,burglary,IPC 457,13.082827,80.211528,"Bus Stand, Anna Nagar, Chennai",shop owner and unknown accused,Registered,2,3
+CCTNS-2026-1005,Mylapore Police Station,2026-01-05,night,chain snatching,IPC 356,13.030246,80.265145,"Temple Street, Mylapore, Chennai","2 victims, 2 suspects",Under Investigation,1,4
+CCTNS-2026-1006,Adyar Police Station,2026-01-06,late night,harassment,IPC 354A,12.994747,80.26206,"Station Approach, Adyar, Chennai",family dispute between 3 persons,Charge Sheet Filed,1,4
+CCTNS-2026-1007,Velachery Police Station,2026-01-07,early morning,stalking,IPC 354D,12.97898,80.22867,"Hospital Junction, Velachery, Chennai","2 victims, 2 suspects",Registered,2,3
+CCTNS-2026-1008,Royapuram Police Station,2026-01-08,morning,domestic violence,DV Act,13.114938,80.297773,"Bus Stand, Royapuram, Chennai","woman complainant, 1 accused",Under Investigation,2,1
+CCTNS-2026-1009,Egmore Police Station,2026-01-09,afternoon,cybercrime,IT Act 66C,13.078885,80.266764,"Hospital Junction, Egmore, Chennai",family dispute between 3 persons,Charge Sheet Filed,2,3
+CCTNS-2026-1010,Thousand Lights Police Station,2026-01-10,evening,drug offence,NDPS Act,13.051502,80.255884,"Residential Street, Thousand Lights, Chennai","2 victims, 2 suspects",Registered,1,2
+CCTNS-2026-1011,Teynampet Police Station,2026-01-11,night,theft,IPC 379,13.036414,80.245771,"Beach Road, Teynampet, Chennai","woman complainant, 1 accused",Under Investigation,2,1
+CCTNS-2026-1012,Anna Nagar Police Station,2026-01-12,late night,robbery,IPC 392,13.082965,80.202614,"Temple Street, Anna Nagar, Chennai",pedestrian and 2 suspects,Charge Sheet Filed,2,1
+CCTNS-2026-1013,Mylapore Police Station,2026-01-13,early morning,murder,IPC 302,13.029176,80.276787,"Temple Street, Mylapore, Chennai","woman complainant, 1 accused",Registered,2,4
+CCTNS-2026-1014,Adyar Police Station,2026-01-14,morning,burglary,IPC 457,12.99953,80.263133,"Mall Signal, Adyar, Chennai",shop owner and unknown accused,Under Investigation,2,2
+CCTNS-2026-1015,Velachery Police Station,2026-01-15,afternoon,chain snatching,IPC 356,12.974346,80.222082,"Residential Street, Velachery, Chennai",pedestrian and 2 suspects,Charge Sheet Filed,2,3
+CCTNS-2026-1016,Royapuram Police Station,2026-01-16,evening,harassment,IPC 354A,13.109209,80.302461,"Beach Road, Royapuram, Chennai",student complainant and unknown accused,Registered,1,1
+CCTNS-2026-1017,Egmore Police Station,2026-01-17,night,stalking,IPC 354D,13.078978,80.255345,"School Zone, Egmore, Chennai",pedestrian and 2 suspects,Under Investigation,1,4
+CCTNS-2026-1018,Thousand Lights Police Station,2026-01-18,late night,attempt to murder,IPC 307,13.055006,80.266138,"Beach Road, Thousand Lights, Chennai",family dispute between 3 persons,Charge Sheet Filed,2,1
+CCTNS-2026-1019,Teynampet Police Station,2026-01-19,early morning,rape,IPC 376,13.044685,80.241533,"Beach Road, Teynampet, Chennai",family dispute between 3 persons,Registered,2,3
+CCTNS-2026-1020,Anna Nagar Police Station,2026-01-20,morning,drug offence,NDPS Act,13.081085,80.209056,"Mall Signal, Anna Nagar, Chennai","1 complainant, 1 suspect",Under Investigation,2,2
+CCTNS-2026-1021,Mylapore Police Station,2026-01-21,afternoon,theft,IPC 379,13.033923,80.263403,"Residential Street, Mylapore, Chennai","woman complainant, 1 accused",Charge Sheet Filed,1,3
+CCTNS-2026-1022,Adyar Police Station,2026-01-22,evening,robbery,IPC 392,13.0054,80.25713,"Beach Road, Adyar, Chennai","1 complainant, 1 suspect",Registered,2,4
+CCTNS-2026-1023,Velachery Police Station,2026-01-23,night,kidnapping,IPC 363,12.970712,80.227966,"Residential Street, Velachery, Chennai","woman complainant, 1 accused",Under Investigation,2,1
+CCTNS-2026-1024,Royapuram Police Station,2026-01-24,late night,burglary,IPC 457,13.109554,80.295578,"Market Road, Royapuram, Chennai","2 victims, 2 suspects",Charge Sheet Filed,2,1
+CCTNS-2026-1025,Egmore Police Station,2026-01-25,early morning,chain snatching,IPC 356,13.080848,80.261423,"School Zone, Egmore, Chennai",shop owner and unknown accused,Registered,2,2
+CCTNS-2026-1026,Thousand Lights Police Station,2026-01-26,morning,harassment,IPC 354A,13.053141,80.264159,"Hospital Junction, Thousand Lights, Chennai","woman complainant, 1 accused",Under Investigation,1,3
+CCTNS-2026-1027,Teynampet Police Station,2026-01-27,afternoon,stalking,IPC 354D,13.040184,80.250447,"Temple Street, Teynampet, Chennai",student complainant and unknown accused,Charge Sheet Filed,2,1
+CCTNS-2026-1028,Anna Nagar Police Station,2026-01-28,evening,murder,IPC 302,13.083266,80.203124,"Bus Stand, Anna Nagar, Chennai","woman complainant, 1 accused",Registered,2,2
+CCTNS-2026-1029,Mylapore Police Station,2026-01-29,night,cybercrime,IT Act 66C,13.025915,80.273025,"Bus Stand, Mylapore, Chennai","woman complainant, 1 accused",Under Investigation,1,1
+CCTNS-2026-1030,Adyar Police Station,2026-01-30,late night,drug offence,NDPS Act,13.006954,80.249634,"Metro Entrance, Adyar, Chennai",family dispute between 3 persons,Charge Sheet Filed,2,2
+CCTNS-2026-1031,Velachery Police Station,2026-01-31,early morning,theft,IPC 379,12.979028,80.224674,"Station Approach, Velachery, Chennai",student complainant and unknown accused,Registered,1,4
+CCTNS-2026-1032,Royapuram Police Station,2026-02-01,morning,robbery,IPC 392,13.11862,80.289547,"Market Road, Royapuram, Chennai",pedestrian and 2 suspects,Under Investigation,2,4
+CCTNS-2026-1033,Egmore Police Station,2026-02-02,afternoon,assault,IPC 351,13.071778,80.266721,"Bus Stand, Egmore, Chennai","2 victims, 2 suspects",Charge Sheet Filed,1,4
+CCTNS-2026-1034,Thousand Lights Police Station,2026-02-03,evening,burglary,IPC 457,13.060551,80.263009,"Market Road, Thousand Lights, Chennai","woman complainant, 1 accused",Registered,1,2
+CCTNS-2026-1035,Teynampet Police Station,2026-02-04,night,attempt to murder,IPC 307,13.042381,80.241943,"School Zone, Teynampet, Chennai",family dispute between 3 persons,Under Investigation,2,4
+CCTNS-2026-1036,Anna Nagar Police Station,2026-02-05,late night,harassment,IPC 354A,13.083297,80.216872,"Mall Signal, Anna Nagar, Chennai","2 victims, 2 suspects",Charge Sheet Filed,1,1
+CCTNS-2026-1037,Mylapore Police Station,2026-02-06,early morning,stalking,IPC 354D,13.041304,80.276522,"Metro Entrance, Mylapore, Chennai",shop owner and unknown accused,Registered,2,4
+CCTNS-2026-1038,Adyar Police Station,2026-02-07,morning,domestic violence,DV Act,13.000902,80.262334,"Bus Stand, Adyar, Chennai",shop owner and unknown accused,Under Investigation,2,1
+CCTNS-2026-1039,Velachery Police Station,2026-02-08,afternoon,murder,IPC 302,12.986165,80.217343,"Mall Signal, Velachery, Chennai",family dispute between 3 persons,Charge Sheet Filed,2,4
+CCTNS-2026-1040,Royapuram Police Station,2026-02-09,evening,drug offence,NDPS Act,13.116845,80.298188,"Beach Road, Royapuram, Chennai",student complainant and unknown accused,Registered,1,2
+CCTNS-2026-1041,Egmore Police Station,2026-02-10,night,theft,IPC 379,13.069947,80.268399,"Station Approach, Egmore, Chennai","1 complainant, 1 suspect",Under Investigation,2,1
+CCTNS-2026-1042,Thousand Lights Police Station,2026-02-11,late night,robbery,IPC 392,13.049702,80.257829,"Beach Road, Thousand Lights, Chennai",shop owner and unknown accused,Charge Sheet Filed,1,1
+CCTNS-2026-1043,Teynampet Police Station,2026-02-12,early morning,assault,IPC 351,13.047421,80.240796,"Market Road, Teynampet, Chennai","woman complainant, 1 accused",Registered,2,1
+CCTNS-2026-1044,Anna Nagar Police Station,2026-02-13,morning,burglary,IPC 457,13.094366,80.211215,"Station Approach, Anna Nagar, Chennai","1 complainant, 1 suspect",Under Investigation,1,4
+CCTNS-2026-1045,Mylapore Police Station,2026-02-14,afternoon,rape,IPC 376,13.036318,80.270744,"Temple Street, Mylapore, Chennai",family dispute between 3 persons,Charge Sheet Filed,2,2
+CCTNS-2026-1046,Adyar Police Station,2026-02-15,evening,harassment,IPC 354A,13.003916,80.253527,"Residential Street, Adyar, Chennai",pedestrian and 2 suspects,Registered,1,3
+CCTNS-2026-1047,Velachery Police Station,2026-02-16,night,stalking,IPC 354D,12.977716,80.227964,"Market Road, Velachery, Chennai","1 complainant, 1 suspect",Under Investigation,2,1
+CCTNS-2026-1048,Royapuram Police Station,2026-02-17,late night,domestic violence,DV Act,13.106872,80.28991,"Residential Street, Royapuram, Chennai",shop owner and unknown accused,Charge Sheet Filed,2,1
+CCTNS-2026-1049,Egmore Police Station,2026-02-18,early morning,cybercrime,IT Act 66C,13.079268,80.258812,"School Zone, Egmore, Chennai",student complainant and unknown accused,Registered,2,1
+CCTNS-2026-1050,Thousand Lights Police Station,2026-02-19,morning,murder,IPC 302,13.059586,80.259074,"Market Road, Thousand Lights, Chennai",shop owner and unknown accused,Under Investigation,2,3
+CCTNS-2026-1051,Teynampet Police Station,2026-02-20,afternoon,theft,IPC 379,13.035647,80.241413,"Beach Road, Teynampet, Chennai",shop owner and unknown accused,Charge Sheet Filed,2,3
+CCTNS-2026-1052,Anna Nagar Police Station,2026-02-21,evening,attempt to murder,IPC 307,13.088977,80.213582,"Metro Entrance, Anna Nagar, Chennai",family dispute between 3 persons,Registered,2,4
+CCTNS-2026-1053,Mylapore Police Station,2026-02-22,night,assault,IPC 351,13.029818,80.276231,"Bus Stand, Mylapore, Chennai","2 victims, 2 suspects",Under Investigation,2,3
+CCTNS-2026-1054,Adyar Police Station,2026-02-23,late night,burglary,IPC 457,12.993905,80.253837,"School Zone, Adyar, Chennai",family dispute between 3 persons,Charge Sheet Filed,1,4
+CCTNS-2026-1055,Velachery Police Station,2026-02-24,early morning,chain snatching,IPC 356,12.979227,80.219943,"Bus Stand, Velachery, Chennai","2 victims, 2 suspects",Registered,1,2
+CCTNS-2026-1056,Royapuram Police Station,2026-02-25,morning,harassment,IPC 354A,13.114429,80.299854,"Station Approach, Royapuram, Chennai",shop owner and unknown accused,Under Investigation,2,2
+CCTNS-2026-1057,Egmore Police Station,2026-02-26,afternoon,stalking,IPC 354D,13.065869,80.258734,"Bus Stand, Egmore, Chennai",2 riders involved,Charge Sheet Filed,1,2
+CCTNS-2026-1058,Thousand Lights Police Station,2026-02-27,evening,kidnapping,IPC 363,13.059571,80.255859,"Beach Road, Thousand Lights, Chennai",pedestrian and 2 suspects,Registered,2,2
+CCTNS-2026-1059,Teynampet Police Station,2026-02-28,night,cybercrime,IT Act 66C,13.048612,80.243488,"School Zone, Teynampet, Chennai",shop owner and unknown accused,Under Investigation,2,1
+CCTNS-2026-1060,Anna Nagar Police Station,2026-03-01,late night,drug offence,NDPS Act,13.08217,80.216892,"Hospital Junction, Anna Nagar, Chennai","woman complainant, 1 accused",Charge Sheet Filed,2,2
+CCTNS-2026-1061,Mylapore Police Station,2026-03-02,early morning,theft,IPC 379,13.038398,80.26343,"Bus Stand, Mylapore, Chennai",student complainant and unknown accused,Registered,1,2
+CCTNS-2026-1062,Adyar Police Station,2026-03-03,morning,murder,IPC 302,13.006265,80.255865,"Residential Street, Adyar, Chennai","woman complainant, 1 accused",Under Investigation,2,2
+CCTNS-2026-1063,Velachery Police Station,2026-03-04,afternoon,assault,IPC 351,12.970779,80.21619,"Temple Street, Velachery, Chennai",family dispute between 3 persons,Charge Sheet Filed,1,3
+CCTNS-2026-1064,Royapuram Police Station,2026-03-05,evening,burglary,IPC 457,13.111318,80.29465,"Beach Road, Royapuram, Chennai",2 riders involved,Registered,1,1
+CCTNS-2026-1065,Egmore Police Station,2026-03-06,night,chain snatching,IPC 356,13.079233,80.257079,"Station Approach, Egmore, Chennai",family dispute between 3 persons,Under Investigation,1,1
+CCTNS-2026-1066,Thousand Lights Police Station,2026-03-07,late night,harassment,IPC 354A,13.058445,80.255731,"Temple Street, Thousand Lights, Chennai",pedestrian and 2 suspects,Charge Sheet Filed,1,4
+CCTNS-2026-1067,Teynampet Police Station,2026-03-08,early morning,stalking,IPC 354D,13.048192,80.242741,"Bus Stand, Teynampet, Chennai",pedestrian and 2 suspects,Registered,1,2
+CCTNS-2026-1068,Anna Nagar Police Station,2026-03-09,morning,domestic violence,DV Act,13.085128,80.20322,"Temple Street, Anna Nagar, Chennai",2 riders involved,Under Investigation,1,3
+CCTNS-2026-1069,Mylapore Police Station,2026-03-10,afternoon,attempt to murder,IPC 307,13.033914,80.27237,"Temple Street, Mylapore, Chennai",pedestrian and 2 suspects,Charge Sheet Filed,2,3
+CCTNS-2026-1070,Adyar Police Station,2026-03-11,evening,drug offence,NDPS Act,13.002071,80.251569,"Hospital Junction, Adyar, Chennai",shop owner and unknown accused,Registered,2,4
+CCTNS-2026-1071,Velachery Police Station,2026-03-12,night,rape,IPC 376,12.979167,80.213106,"Residential Street, Velachery, Chennai","woman complainant, 1 accused",Under Investigation,2,4
+CCTNS-2026-1072,Royapuram Police Station,2026-03-13,late night,robbery,IPC 392,13.118272,80.296207,"Temple Street, Royapuram, Chennai",student complainant and unknown accused,Charge Sheet Filed,2,4
+CCTNS-2026-1073,Egmore Police Station,2026-03-14,early morning,assault,IPC 351,13.07601,80.261079,"School Zone, Egmore, Chennai","2 victims, 2 suspects",Registered,2,3
+CCTNS-2026-1074,Thousand Lights Police Station,2026-03-15,morning,murder,IPC 302,13.050394,80.265432,"Metro Entrance, Thousand Lights, Chennai",family dispute between 3 persons,Under Investigation,2,2
+CCTNS-2026-1075,Teynampet Police Station,2026-03-16,afternoon,chain snatching,IPC 356,13.046705,80.242058,"Bus Stand, Teynampet, Chennai","woman complainant, 1 accused",Charge Sheet Filed,2,1
+CCTNS-2026-1076,Anna Nagar Police Station,2026-03-17,evening,harassment,IPC 354A,13.086587,80.216278,"Station Approach, Anna Nagar, Chennai","woman complainant, 1 accused",Registered,2,4
+CCTNS-2026-1077,Mylapore Police Station,2026-03-18,night,stalking,IPC 354D,13.032194,80.264061,"Bus Stand, Mylapore, Chennai","2 victims, 2 suspects",Under Investigation,2,2
+CCTNS-2026-1078,Adyar Police Station,2026-03-19,late night,domestic violence,DV Act,12.996014,80.263827,"Beach Road, Adyar, Chennai",student complainant and unknown accused,Charge Sheet Filed,1,2
+CCTNS-2026-1079,Velachery Police Station,2026-03-20,early morning,cybercrime,IT Act 66C,12.98508,80.215042,"School Zone, Velachery, Chennai",student complainant and unknown accused,Registered,2,4
+CCTNS-2026-1080,Royapuram Police Station,2026-03-21,morning,drug offence,NDPS Act,13.115502,80.298008,"Beach Road, Royapuram, Chennai",pedestrian and 2 suspects,Under Investigation,2,2
+CCTNS-2026-1081,Egmore Police Station,2026-03-22,afternoon,theft,IPC 379,13.077098,80.260495,"Residential Street, Egmore, Chennai","woman complainant, 1 accused",Charge Sheet Filed,2,4
+CCTNS-2026-1082,Thousand Lights Police Station,2026-03-23,evening,robbery,IPC 392,13.058928,80.254594,"Market Road, Thousand Lights, Chennai",family dispute between 3 persons,Registered,1,3
+CCTNS-2026-1083,Teynampet Police Station,2026-03-24,night,assault,IPC 351,13.039174,80.253988,"Market Road, Teynampet, Chennai",shop owner and unknown accused,Under Investigation,1,2
+CCTNS-2026-1084,Anna Nagar Police Station,2026-03-25,late night,burglary,IPC 457,13.085429,80.204545,"Metro Entrance, Anna Nagar, Chennai","2 victims, 2 suspects",Charge Sheet Filed,2,4
+CCTNS-2026-1085,Mylapore Police Station,2026-03-26,early morning,murder,IPC 302,13.031094,80.269155,"Bus Stand, Mylapore, Chennai","woman complainant, 1 accused",Registered,2,4
+CCTNS-2026-1086,Adyar Police Station,2026-03-27,morning,attempt to murder,IPC 307,12.999432,80.260817,"Bus Stand, Adyar, Chennai",pedestrian and 2 suspects,Under Investigation,2,4
+CCTNS-2026-1087,Velachery Police Station,2026-03-28,afternoon,stalking,IPC 354D,12.970494,80.218728,"Hospital Junction, Velachery, Chennai",pedestrian and 2 suspects,Charge Sheet Filed,1,4
+CCTNS-2026-1088,Royapuram Police Station,2026-03-29,evening,domestic violence,DV Act,13.109211,80.293473,"Bus Stand, Royapuram, Chennai",pedestrian and 2 suspects,Registered,2,4
+CCTNS-2026-1089,Egmore Police Station,2026-03-30,night,kidnapping,IPC 363,13.076787,80.266348,"School Zone, Egmore, Chennai","1 complainant, 1 suspect",Under Investigation,2,4
+CCTNS-2026-1090,Thousand Lights Police Station,2026-03-31,late night,drug offence,NDPS Act,13.05837,80.260808,"Market Road, Thousand Lights, Chennai",pedestrian and 2 suspects,Charge Sheet Filed,1,4
+CCTNS-2026-1091,Teynampet Police Station,2026-04-01,early morning,rape,IPC 376,13.036708,80.243863,"Temple Street, Teynampet, Chennai","woman complainant, 1 accused",Registered,2,4
+CCTNS-2026-1092,Anna Nagar Police Station,2026-04-02,morning,robbery,IPC 392,13.08453,80.21428,"Hospital Junction, Anna Nagar, Chennai",family dispute between 3 persons,Under Investigation,2,3
+CCTNS-2026-1093,Mylapore Police Station,2026-04-03,afternoon,assault,IPC 351,13.039159,80.269225,"Beach Road, Mylapore, Chennai","1 complainant, 1 suspect",Charge Sheet Filed,2,2
+CCTNS-2026-1094,Adyar Police Station,2026-04-04,evening,burglary,IPC 457,13.003602,80.261,"Bus Stand, Adyar, Chennai","1 complainant, 1 suspect",Registered,1,2
+CCTNS-2026-1095,Velachery Police Station,2026-04-05,night,chain snatching,IPC 356,12.983828,80.223041,"Metro Entrance, Velachery, Chennai",shop owner and unknown accused,Under Investigation,2,1
+CCTNS-2026-1096,Royapuram Police Station,2026-04-06,late night,murder,IPC 302,13.114724,80.289987,"Residential Street, Royapuram, Chennai",2 riders involved,Charge Sheet Filed,2,2
+CCTNS-2026-1097,Egmore Police Station,2026-04-07,early morning,stalking,IPC 354D,13.074894,80.26832,"Market Road, Egmore, Chennai",shop owner and unknown accused,Registered,2,1
+CCTNS-2026-1098,Thousand Lights Police Station,2026-04-08,morning,domestic violence,DV Act,13.058159,80.265062,"Station Approach, Thousand Lights, Chennai",pedestrian and 2 suspects,Under Investigation,2,2
+CCTNS-2026-1099,Teynampet Police Station,2026-04-09,afternoon,cybercrime,IT Act 66C,13.035016,80.25075,"Metro Entrance, Teynampet, Chennai","2 victims, 2 suspects",Charge Sheet Filed,2,1
+CCTNS-2026-1100,Anna Nagar Police Station,2026-04-10,evening,drug offence,NDPS Act,13.09204,80.211155,"Bus Stand, Anna Nagar, Chennai",2 riders involved,Registered,2,3
+101,egmore police station,2026-04-07,night,theft,unknown,13.44835,90.324,anna saila egmore,1 suspect,under investigisation,1,1

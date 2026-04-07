@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crime Intelligence Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body data-active-section="{{ active_section }}">
+    <div class="app-shell">
+        <aside class="sidebar">
+            <div>
+                <div class="brand-mark">CI</div>
+                <p class="eyebrow">Police Operations Platform</p>
+                <h1>Crime Intelligence Control System</h1>
+                <p class="sidebar-copy">Operational dashboard for FIR monitoring, patrol planning, hotspot review, and decision support.</p>
+                <div class="sidebar-meta">
+                    <div class="meta-row"><span>Authority</span><strong>Law Enforcement Control Room</strong></div>
+                    <div class="meta-row"><span>Status</span><strong>Secure Session Active</strong></div>
+                </div>
+                <p class="muted"><strong>User:</strong> {{ logged_in_user }}</p>
+            </div>
+
+            <nav class="nav-list">
+                <button class="nav-button {% if active_section == 'home' %}active{% endif %}" onclick="showSection('home', this)">Overview</button>
+                <button class="nav-button {% if active_section == 'fir' %}active{% endif %}" onclick="showSection('fir', this)">FIR Update</button>
+                <button class="nav-button {% if active_section == 'patrol' %}active{% endif %}" onclick="showSection('patrol', this)">Patrol Routes</button>
+                <button class="nav-button {% if active_section == 'gpsroute' %}active{% endif %}" onclick="showSection('gpsroute', this)">Route Map</button>
+                <button class="nav-button {% if active_section == 'heatmap' %}active{% endif %}" onclick="showSection('heatmap', this)">Crime Heat Map</button>
+                <button class="nav-button {% if active_section == 'crime' %}active{% endif %}" onclick="showSection('crime', this)">Crime Rates</button>
+                <button class="nav-button {% if active_section == 'prediction' %}active{% endif %}" onclick="showSection('prediction', this)">Crime Prediction</button>
+                <button class="nav-button {% if active_section == 'emergency' %}active{% endif %}" onclick="showSection('emergency', this)">Emergency Alerts</button>
+                <button class="nav-button {% if active_section == 'women' %}active{% endif %}" onclick="showSection('women', this)">Women Safety</button>
+            </nav>
+
+            <form action="{{ url_for('logout') }}" method="POST" class="logout-form">
+                <button type="submit" class="nav-button logout-button">Logout</button>
+            </form>
+        </aside>
+
+        <main class="main-content">
+            <header class="page-header">
+                <div>
+                    <p class="eyebrow">Official Dashboard</p>
+                    <h2>Integrated Crime Monitoring And Patrol Coordination</h2>
+                    <p class="muted">Centralized intelligence view for field response, hotspot supervision, and time-based route planning.</p>
+                </div>
+                <div class="header-meta-card">
+                    <div class="meta-row"><span>Data Source</span><strong>{{ data_source }}</strong></div>
+                    <div class="meta-row"><span>Last Updated</span><strong>{{ last_updated }}</strong></div>
+                </div>
+            </header>
+
+            <section id="home" class="section {% if active_section == 'home' %}active-section{% endif %}">
+                <div class="hero-card">
+                    <div>
+                        <p class="eyebrow">Operational Summary</p>
+                        <h2>Crime intelligence aligned to the selected patrol window</h2>
+                        <p class="hero-copy">{{ prediction_summary.headline }}</p>
+                        <p class="muted">{{ prediction_summary.details }}</p>
+                    </div>
+                    <div class="metric-grid">
+                        <article class="metric-card">
+                            <span>Total FIRs</span>
+                            <strong>{{ total_cases }}</strong>
+                        </article>
+                        <article class="metric-card">
+                            <span>Major Crimes</span>
+                            <strong>{{ major_crime_cases }}</strong>
+                        </article>
+                        <article class="metric-card">
+                            <span>Filtered Patrol Cases</span>
+                            <strong>{{ route_window['filtered_cases'] }}</strong>
+                        </article>
+                    </div>
+                </div>
+
+                {% if latest_fir %}
+                    <div class="panel latest-panel">
+                        <div class="panel-header">
+                            <div>
+                                <p class="eyebrow">Latest FIR Registered</p>
+                                <h3>{{ latest_fir['fir_number'] }} | {{ latest_fir['crime_type'].title() }}</h3>
+                            </div>
+                        </div>
+                        <div class="latest-grid">
+                            <div class="stat-row"><span>Station</span><strong>{{ latest_fir['station_name'] }}</strong></div>
+                            <div class="stat-row"><span>Date</span><strong>{{ latest_fir['incident_date'] }}</strong></div>
+                            <div class="stat-row"><span>Time Slot</span><strong>{{ latest_fir['time'].title() }}</strong></div>
+                            <div class="stat-row"><span>Location</span><strong>{{ latest_fir['location_name'] }}</strong></div>
+                        </div>
+                    </div>
+                {% endif %}
+
+                <div class="panel">
+                    <div class="panel-header">
+                        <div>
+                            <p class="eyebrow">Map Intelligence</p>
+                            <h3>Road-based patrol map, major-crime specification coloring, and prediction layer</h3>
+                        </div>
+                    </div>
+                    <iframe src="{{ map_url }}" title="Crime Map"></iframe>
+                </div>
+            </section>
+
+            <section id="fir" class="section {% if active_section == 'fir' %}active-section{% endif %}">
+                <div class="panel form-panel">
+                    <div class="panel-header">
+                        <div>
+                            <p class="eyebrow">Register FIR</p>
+                            <h3>Add a new FIR with date, time, station, and severity context</h3>
+                        </div>
+                    </div>
+
+                    <form action="/add" method="POST" class="fir-form">
+                        <label>Latitude<input type="text" name="lat" placeholder="13.0827" required></label>
+                        <label>Longitude<input type="text" name="lon" placeholder="80.2707" required></label>
+                        <label>Crime Type<input type="text" name="crime" placeholder="murder / theft / robbery" required></label>
+                        <label>IPC Section<input type="text" name="section" placeholder="IPC 302"></label>
+                        <label>Incident Date<input type="date" name="incident_date" value="{{ route_date }}" required></label>
+                        <label>
+                            Time Slot
+                            <select name="time" required>
+                                {% for slot in time_slots %}
+                                    <option value="{{ slot }}" {% if slot == route_time %}selected{% endif %}>{{ slot.title() }}</option>
+                                {% endfor %}
+                            </select>
+                        </label>
+                        <label>Police Station<input type="text" name="station_name" placeholder="Egmore Police Station"></label>
+                        <label>FIR Number<input type="text" name="fir_number" placeholder="Optional auto-generated"></label>
+                        <label>People / Summary<input type="text" name="people" placeholder="Victim + suspect summary"></label>
+                        <label>Location Name<input type="text" name="location_name" placeholder="Anna Salai, Egmore"></label>
+                        <label>Status<input type="text" name="status" placeholder="Registered / Under Investigation"></label>
+                        <label>Victim Count<input type="number" name="victim_count" value="1" min="0"></label>
+                        <label>Suspect Count<input type="number" name="suspect_count" value="1" min="0"></label>
+                        <button type="submit" class="primary-button">Submit FIR And Refresh Dashboard</button>
+                    </form>
+                </div>
+            </section>
+
+            <section id="patrol" class="section {% if active_section == 'patrol' %}active-section{% endif %}">
+                <div class="panel">
+                    <div class="panel-header">
+                        <div>
+                            <p class="eyebrow">Route Planning</p>
+                            <h3>Google-like patrol route for the required date and time window</h3>
+                        </div>
+                    </div>
+
+                    <form action="/" method="GET" class="route-filter-form">
+                        <label>Patrol Date<input type="date" name="route_date" value="{{ route_date }}"></label>
+                        <label>
+                            Patrol Time
+                            <select name="route_time">
+                                {% for slot in time_slots %}
+                                    <option value="{{ slot }}" {% if slot == route_time %}selected{% endif %}>{{ slot.title() }}</option>
+                                {% endfor %}
+                            </select>
+                        </label>
+                        <input type="hidden" name="active_section" value="patrol">
+                        <button type="submit" class="primary-button compact">Update Patrol Route</button>
+                    </form>
+
+                    {% if route_segments %}
+                        <div class="route-grid">
+                            {% for segment in route_segments %}
+                                <article class="route-card route-card-{{ segment['risk'] }}">
+                                    <span>{{ segment['label'] }}</span>
+                                    <strong>{{ segment['start_name'] }}</strong>
+                                    <p>to {{ segment['end_name'] }}</p>
+                                </article>
+                            {% endfor %}
+                        </div>
+                        <div class="legend-row">
+                            <span class="legend-chip safe">Safe</span>
+                            <span class="legend-chip watch">Watch</span>
+                            <span class="legend-chip critical">Critical</span>
+                        </div>
+                        <p class="muted">The route is generated from FIRs matching the selected patrol date and time pattern. Major crimes like murder shift nearby segments into higher-priority colors.</p>
+                    {% else %}
+                        <p class="muted">No route segments are available for the chosen patrol window yet.</p>
+                    {% endif %}
+                </div>
+            </section>
+
+            <section id="gpsroute" class="section {% if active_section == 'gpsroute' %}active-section{% endif %}">
+                <div class="panel">
+                    <div class="panel-header">
+                        <div>
+                            <p class="eyebrow">Navigation Route</p>
+                            <h3>GPS-style route between any two locations</h3>
+                        </div>
+                    </div>
+
+                    <form action="/" method="GET" class="route-filter-form route-map-form">
+                        <input type="hidden" name="route_date" value="{{ route_date }}">
+                        <input type="hidden" name="route_time" value="{{ route_time }}">
+                        <input type="hidden" name="active_section" value="gpsroute">
+                        <label>Start Location<input type="text" name="start_location" value="{{ start_location }}" placeholder="Egmore Police Station, Chennai"></label>
+                        <label>Destination<input type="text" name="end_location" value="{{ end_location }}" placeholder="Anna Nagar, Chennai"></label>
+                        <button type="submit" class="primary-button compact">Generate Route</button>
+                    </form>
+
+                    <div class="panel route-picker-panel">
+                        <div class="panel-header">
+                            <div>
+                                <p class="eyebrow">Map Click Picker</p>
+                                <h3>Click once for start and again for destination</h3>
+                            </div>
+                        </div>
+                        <p class="muted">You can use coordinates from the picker directly. First click sets the green start marker, second click sets the red destination marker.</p>
+                        <iframe src="{{ route_picker_url }}" title="Route Picker Map"></iframe>
+                    </div>
+
+                    <p class="muted">{{ route_map_state['message'] }}</p>
+                    {% if route_map_state['success'] %}
+                        <div class="latest-grid">
+                            <div class="stat-row"><span>Start</span><strong>{{ route_map_state['start'] }}</strong></div>
+                            <div class="stat-row"><span>Destination</span><strong>{{ route_map_state['end'] }}</strong></div>
+                        </div>
+                        {% if route_map_state['google_maps_url'] %}
+                            <p class="muted">The map below is the dashboard preview. For the full Google Maps GPS-style route like your example, open the live navigation link.</p>
+                            <a href="{{ route_map_state['google_maps_url'] }}" target="_blank" rel="noopener" class="primary-button compact button-link">Open In Google Maps</a>
+                        {% endif %}
+                        <iframe src="{{ route_map_url }}" title="GPS Route Map"></iframe>
+                        <div class="metric-grid route-critical-summary">
+                            <article class="metric-card emphasis-card critical-summary-card">
+                                <span>Critical Crimes On Route</span>
+                                <strong>{{ route_map_state['critical_crimes_on_route']|length }}</strong>
+                                <p class="muted">Serious FIRs like murder, rape, and kidnapping detected close to the selected path.</p>
+                            </article>
+                        </div>
+                        {% if route_map_state['critical_crimes_on_route'] %}
+                            <div class="panel route-critical-panel">
+                                <div class="panel-header">
+                                    <div>
+                                        <p class="eyebrow">Critical Alerts</p>
+                                        <h3>High-priority crimes detected along the selected route</h3>
+                                    </div>
+                                </div>
+                                <div class="emergency-grid">
+                                    {% for row in route_map_state['critical_crimes_on_route'] %}
+                                        <article class="route-card route-card-critical">
+                                            <span>{{ row['crime_type'].title() }}</span>
+                                            <strong>{{ row['location_name'] }}</strong>
+                                            <p>{{ row['station_name'] }} | {{ row['incident_date'] }} | {{ row['time'].title() }}</p>
+                                            <div class="emergency-meta">
+                                                <div class="stat-row"><span>Distance From Route</span><strong>{{ row['distance_from_route_m'] }} m</strong></div>
+                                                <div class="stat-row"><span>FIR Number</span><strong>{{ row['fir_number'] }}</strong></div>
+                                                <div class="stat-row"><span>IPC Section</span><strong>{{ row['section'] }}</strong></div>
+                                            </div>
+                                        </article>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        {% endif %}
+                        <div class="panel route-incidents-panel">
+                            <div class="panel-header">
+                                <div>
+                                    <p class="eyebrow">Crimes On The Way</p>
+                                    <h3>Recorded FIR locations along the selected route</h3>
+                                </div>
+                            </div>
+                            {% if route_map_state['crimes_on_route'] %}
+                                <div class="table-wrap">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Crime</th>
+                                                <th>Location</th>
+                                                <th>Police Station</th>
+                                                <th>Date</th>
+                                                <th>Time</th>
+                                                <th>Distance From Route</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for row in route_map_state['crimes_on_route'] %}
+                                                <tr>
+                                                    <td>{{ row['crime_type'].title() }}</td>
+                                                    <td>{{ row['location_name'] }}</td>
+                                                    <td>{{ row['station_name'] }}</td>
+                                                    <td>{{ row['incident_date'] }}</td>
+                                                    <td>{{ row['time'].title() }}</td>
+                                                    <td>{{ row['distance_from_route_m'] }} m</td>
+                                                </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            {% else %}
+                                <p class="muted">No recorded FIR locations were detected along this selected route corridor.</p>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                </div>
+            </section>
+
+            <section id="heatmap" class="section {% if active_section == 'heatmap' %}active-section{% endif %}">
+                <div class="hero-card">
+                    <div>
+                        <p class="eyebrow">Collective Crime Heat Map</p>
+                        <h2>Heat-based view of combined crime activity and concentration zones</h2>
+                        <p class="hero-copy">This map groups nearby incidents into a collective color-based intensity layer so high-crime areas appear as stronger heat zones instead of separate markers.</p>
+                    </div>
+                    <div class="metric-grid">
+                        <article class="metric-card">
+                            <span>Heat Map Cases</span>
+                            <strong>{{ heat_map_state['case_count'] }}</strong>
+                        </article>
+                        <article class="metric-card">
+                            <span>Patrol Date</span>
+                            <strong>{{ heat_map_state['window_date'] }}</strong>
+                        </article>
+                        <article class="metric-card">
+                            <span>Patrol Time</span>
+                            <strong>{{ heat_map_state['window_time'] }}</strong>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <div class="panel-header">
+                        <div>
+                            <p class="eyebrow">Heat Layer</p>
+                            <h3>Collective circle-style crime density map</h3>
+                        </div>
+                    </div>
+                    <div class="legend-row">
+                        <span class="legend-chip safe">Low Activity</span>
+                        <span class="legend-chip watch">Moderate Activity</span>
+                        <span class="legend-chip critical">High / Critical Activity</span>
+                    </div>
+                    <p class="muted">Green shows lower concentration, orange shows moderate concentration, and red to dark red shows strong collective crime activity in nearby areas. The highlighted circles on the map represent grouped hotspot zones, not single incidents.</p>
+                    <iframe src="{{ heat_map_url }}" title="Crime Heat Map"></iframe>
+                </div>
+
+                <div class="panel">
+                    <div class="panel-header">
+                        <div>
+                            <p class="eyebrow">Collective Highlights</p>
+                            <h3>Grouped crime concentration circles</h3>
+                        </div>
+                    </div>
+                    {% if heat_map_state['hotspots'] %}
+                        <div class="area-grid">
+                            {% for area in heat_map_state['hotspots'] %}
+                                <article class="area-card area-card-{{ area['risk_band']|lower }}">
+                                    <span>{{ area['risk_band'] }} Zone</span>
+                                    <strong>{{ area['location_name'] }}</strong>
+                                    <p>Collective likely crime: {{ area['crime_type'] }}</p>
+                                    <p>Grouped incidents: {{ area['incident_count'] }}</p>
+                                    <p>Heat score: {{ area['risk_score'] }}</p>
+                                </article>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <p class="muted">No collective crime zones are available for the selected patrol window.</p>
+                    {% endif %}
+                </div>
+            </section>
+
+            <section id="crime" class="section {% if active_section == 'crime' %}active-section{% endif %}">
+                <div class="metric-grid crime-rate-summary">
+                    <article class="metric-card emphasis-card">
+                        <span>Top Crime Category</span>
+                        <strong>{{ crime_overview['top_category']['label'] }}</strong>
+                        <p class="muted">{{ crime_overview['top_category']['count'] }} FIRs recorded in this category.</p>
+                    </article>
+                    <article class="metric-card emphasis-card">
+                        <span>Busiest Station</span>
+                        <strong>{{ crime_overview['busiest_station']['label'] }}</strong>
+                        <p class="muted">{{ crime_overview['busiest_station']['count'] }} linked FIRs registered.</p>
+                    </article>
+                    <article class="metric-card emphasis-card">
+                        <span>Peak Time Window</span>
+                        <strong>{{ crime_overview['peak_time']['label'] }}</strong>
+                        <p class="muted">{{ crime_overview['peak_time']['count'] }} incidents mapped in this period.</p>
+                    </article>
+                </div>
+
+                <div class="graph-tile-grid">
+                    <button class="graph-tile" type="button" onclick="scrollToGraph('crime-card')">
+                        <span>Category Graph</span>
+                        <strong>Crime Distribution</strong>
+                    </button>
+                    <button class="graph-tile" type="button" onclick="scrollToGraph('time-card')">
+                        <span>Time Graph</span>
+                        <strong>Crime By Time Slot</strong>
+                    </button>
+                    <button class="graph-tile" type="button" onclick="scrollToGraph('station-card')">
+                        <span>Station Graph</span>
+                        <strong>Police Station Load</strong>
+                    </button>
+                    <button class="graph-tile" type="button" onclick="scrollToGraph('trend-card')">
+                        <span>Trend Graph</span>
+                        <strong>Crime Trend Over Dates</strong>
+                    </button>
+                </div>
+                <p class="muted graph-note">The category and station charts now show top entries only, which keeps labels readable instead of overlapping.</p>
+
+                <div class="analytics-grid analytics-grid-four">
+                    <div class="panel chart-panel" id="crime-card">
+                        <div class="panel-header"><div><p class="eyebrow">Crime Distribution</p><h3>Crime rate graph by category</h3></div></div>
+                        <canvas id="crimeChart" height="260"></canvas>
+                    </div>
+                    <div class="panel chart-panel" id="time-card">
+                        <div class="panel-header"><div><p class="eyebrow">Temporal Pattern</p><h3>Crime rate graph by time slot</h3></div></div>
+                        <canvas id="timeChart" height="260"></canvas>
+                    </div>
+                    <div class="panel chart-panel" id="station-card">
+                        <div class="panel-header"><div><p class="eyebrow">Station Load</p><h3>Crime rate graph by police station</h3></div></div>
+                        <canvas id="stationChart" height="260"></canvas>
+                    </div>
+                    <div class="panel chart-panel" id="trend-card">
+                        <div class="panel-header"><div><p class="eyebrow">Trend Analysis</p><h3>Crime trend over incident dates</h3></div></div>
+                        <canvas id="trendChart" height="260"></canvas>
+                    </div>
+                </div>
+
+                <div class="analytics-grid analytics-grid-wide">
+                    <div class="panel">
+                        <div class="panel-header"><div><p class="eyebrow">IPC Section Trends</p><h3>Frequently invoked sections</h3></div></div>
+                        {% if section_counts %}
+                            {% for row in section_counts %}
+                                <div class="stat-row">
+                                    <span>{{ row['section'] }}</span>
+                                    <strong>{{ row['count'] }}</strong>
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            <p class="muted">No IPC data available yet.</p>
+                        {% endif %}
+                    </div>
+
+                    <div class="panel">
+                        <div class="panel-header"><div><p class="eyebrow">Station Counts</p><h3>Active police stations in the dataset</h3></div></div>
+                        {% if station_counts %}
+                            {% for row in station_counts %}
+                                <div class="stat-row">
+                                    <span>{{ row['station_name'] }}</span>
+                                    <strong>{{ row['count'] }}</strong>
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            <p class="muted">No station-level records available yet.</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </section>
+
+            <section id="prediction" class="section {% if active_section == 'prediction' %}active-section{% endif %}">
+                <div class="prediction-grid">
+                    <div class="panel">
+                        <div class="panel-header"><div><p class="eyebrow">AI Risk Estimation</p><h3>Estimated next crime execution zone for the patrol window</h3></div></div>
+                        {% if prediction_summary['prediction'] %}
+                            <div class="prediction-score">
+                                <span class="prediction-model">{{ prediction_summary['prediction']['model_name'] }}</span>
+                                <span class="prediction-band prediction-band-{{ prediction_summary['prediction']['risk_band']|lower }}">{{ prediction_summary['prediction']['risk_band'] }}</span>
+                                <strong>{{ prediction_summary['prediction']['risk_score'] }}</strong>
+                                <p>Risk score for {{ prediction_summary['prediction']['route_date'] }} / {{ prediction_summary['prediction']['route_time'].title() }}</p>
+                            </div>
+                            <div class="prediction-details">
+                                <div class="stat-row"><span>Expected Crime</span><strong>{{ prediction_summary['prediction']['crime_type'] }}</strong></div>
+                                <div class="stat-row"><span>Peak Time</span><strong>{{ prediction_summary['prediction']['peak_time'] }}</strong></div>
+                                <div class="stat-row"><span>Expected Case Volume</span><strong>{{ prediction_summary['prediction']['expected_cases'] }}</strong></div>
+                                <div class="stat-row"><span>Confidence</span><strong>{{ prediction_summary['prediction']['confidence'] }}%</strong></div>
+                                <div class="stat-row"><span>Predicted Coordinates</span><strong>{{ prediction_summary['prediction']['latitude'] }}, {{ prediction_summary['prediction']['longitude'] }}</strong></div>
+                            </div>
+                        {% else %}
+                            <p class="muted">Prediction needs more FIR records to estimate the next high-risk event.</p>
+                        {% endif %}
+                    </div>
+
+                    <div class="panel">
+                        <div class="panel-header"><div><p class="eyebrow">Why This Prediction</p><h3>Pattern signals used in the estimate</h3></div></div>
+                        {% if prediction_summary['prediction'] %}
+                            <div class="signal-list">
+                                {% for driver in prediction_summary['prediction']['drivers'] %}
+                                    <div class="signal-item">{{ driver }}</div>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            <p class="muted">No prediction drivers available yet.</p>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <div class="panel-header"><div><p class="eyebrow">100m Radius Prediction</p><h3>Predicted risk for every 100-meter micro area</h3></div></div>
+                    {% if area_predictions %}
+                        <div class="area-grid">
+                            {% for area in area_predictions %}
+                                <article class="area-card area-card-{{ area['risk_band']|lower }}">
+                                    <span>{{ area['risk_band'] }} Zone{% if area.get('ai_priority') %} | {{ area['ai_priority'] }}{% endif %}</span>
+                                    <strong>{{ area['location_name'] }}</strong>
+                                    <p>Likely crime: {{ area['crime_type'] }}</p>
+                                    <p>Nearby incidents in 100m: {{ area['incident_count'] }}</p>
+                                    <p>Risk score: {{ area['risk_score'] }}</p>
+                                </article>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <p class="muted">No 100-meter radius prediction zones are available yet.</p>
+                    {% endif %}
+                </div>
+            </section>
+
+            <section id="emergency" class="section {% if active_section == 'emergency' %}active-section{% endif %}">
+                <div class="hero-card">
+                    <div>
+                        <p class="eyebrow">Emergency Dispatch</p>
+                        <h2>Nearest police station alert routing for high-priority incidents</h2>
+                        <p class="hero-copy">This panel identifies severe FIR-linked incidents and maps each one to the nearest available police station for immediate field alerting.</p>
+                    </div>
+                    <div class="metric-grid">
+                        <article class="metric-card">
+                            <span>Active Emergency Cases</span>
+                            <strong>{{ emergency_overview['critical_open_cases'] }}</strong>
+                        </article>
+                        <article class="metric-card">
+                            <span>Stations On Alert</span>
+                            <strong>{{ emergency_overview['stations_on_alert'] }}</strong>
+                        </article>
+                        <article class="metric-card">
+                            <span>Nearest Dispatch Distance</span>
+                            <strong>{{ emergency_overview['latest_dispatch_distance_km'] }} km</strong>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <div class="panel-header"><div><p class="eyebrow">Alert Queue</p><h3>Nearest police station dispatch recommendations</h3></div></div>
+                    {% if emergency_alerts %}
+                        <div class="emergency-grid">
+                            {% for alert in emergency_alerts %}
+                                <article class="route-card route-card-{{ alert['severity_band']|lower }}">
+                                    <span>{{ alert['severity_band'] }} Alert</span>
+                                    <strong>{{ alert['crime_type'] }}</strong>
+                                    <p>{{ alert['instruction'] }}</p>
+                                    <div class="emergency-meta">
+                                        <div class="stat-row"><span>Location</span><strong>{{ alert['location_name'] }}</strong></div>
+                                        <div class="stat-row"><span>Nearest Station</span><strong>{{ alert['nearest_station'] }}</strong></div>
+                                        <div class="stat-row"><span>Dispatch Distance</span><strong>{{ alert['distance_km'] }} km</strong></div>
+                                        <div class="stat-row"><span>Incident Window</span><strong>{{ alert['incident_date'] }} | {{ alert['time'] }}</strong></div>
+                                        <div class="stat-row"><span>FIR Number</span><strong>{{ alert['fir_number'] }}</strong></div>
+                                    </div>
+                                </article>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <p class="muted">No emergency-priority incidents are available for nearest-station alert routing yet.</p>
+                    {% endif %}
+                </div>
+            </section>
+
+            <section id="women" class="section {% if active_section == 'women' %}active-section{% endif %}">
+                <div class="hero-card">
+                    <div>
+                        <p class="eyebrow">Static Women Safety Analysis</p>
+                        <h2>Incident pattern review for women-focused safety monitoring</h2>
+                        <p class="hero-copy">This section shows a fixed analytical summary from the FIR records and a dedicated deployment suggestion for the special women patrol team.</p>
+                    </div>
+                    <div class="metric-grid">
+                        <article class="metric-card">
+                            <span>Total Women-Safety FIRs</span>
+                            <strong>{{ women_safety_overview['total_incidents'] }}</strong>
+                        </article>
+                        <article class="metric-card">
+                            <span>Critical Cases</span>
+                            <strong>{{ women_safety_overview['critical_incidents'] }}</strong>
+                        </article>
+                        <article class="metric-card">
+                            <span>Night Incidents</span>
+                            <strong>{{ women_safety_overview['night_incidents'] }}</strong>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="analytics-grid analytics-grid-wide">
+                    <div class="panel">
+                        <div class="panel-header"><div><p class="eyebrow">Static Analysis</p><h3>Women safety operational findings</h3></div></div>
+                        <div class="latest-grid">
+                            <div class="stat-row"><span>Repeat Stations</span><strong>{{ women_safety_overview['repeat_stations'] }}</strong></div>
+                            <div class="stat-row"><span>Special Team Status</span><strong>Active Monitoring Required</strong></div>
+                        </div>
+                        {% for item in women_safety_analysis %}
+                            <div class="signal-item women-analysis-card">
+                                <span>{{ item['label'] }}</span>
+                                <strong>{{ item['value'] }}</strong>
+                                <p class="muted">{{ item['detail'] }}</p>
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="panel">
+                        <div class="panel-header"><div><p class="eyebrow">Women Patrol Team</p><h3>Recommended patrol deployment for special women unit</h3></div></div>
+                        {% if women_team_patrols %}
+                            <div class="route-grid">
+                                {% for patrol in women_team_patrols %}
+                                    <article class="route-card route-card-{{ patrol['priority'].lower() }}">
+                                        <span>{{ patrol['team'] }}</span>
+                                        <strong>{{ patrol['station'] }}</strong>
+                                        <p>{{ patrol['instruction'] }}</p>
+                                        <div class="women-patrol-meta">
+                                            <div class="stat-row"><span>Priority</span><strong>{{ patrol['priority'] }}</strong></div>
+                                            <div class="stat-row"><span>Time Window</span><strong>{{ patrol['time_window'] }}</strong></div>
+                                            <div class="stat-row"><span>Coverage</span><strong>{{ patrol['coverage'] }}</strong></div>
+                                            <div class="stat-row"><span>Incident Load</span><strong>{{ patrol['incident_count'] }}</strong></div>
+                                        </div>
+                                    </article>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            <p class="muted">No women-safety incident cluster is available yet for special women-team patrol deployment.</p>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <div class="panel-header"><div><p class="eyebrow">Watchlist</p><h3>Women safety incident register</h3></div></div>
+                    {% if women_safety_records %}
+                        <div class="table-wrap">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Crime</th>
+                                        <th>Date</th>
+                                        <th>Time</th>
+                                        <th>Station</th>
+                                        <th>Location</th>
+                                        <th>Section</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for row in women_safety_records %}
+                                        <tr>
+                                            <td>{{ row['crime_type'] }}</td>
+                                            <td>{{ row['incident_date'] }}</td>
+                                            <td>{{ row['time'] }}</td>
+                                            <td>{{ row['station_name'] }}</td>
+                                            <td>{{ row['location_name'] }}</td>
+                                            <td>{{ row['section'] }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    {% else %}
+                        <p class="muted">No women safety specific incidents are flagged in the current FIR dataset.</p>
+                    {% endif %}
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script id="chart-data" type="application/json">
+        {
+            "crimeLabels": {{ crime_chart_labels|tojson }},
+            "crimeValues": {{ crime_chart_values|tojson }},
+            "timeLabels": {{ time_chart_labels|tojson }},
+            "timeValues": {{ time_chart_values|tojson }},
+            "stationLabels": {{ station_chart_labels|tojson }},
+            "stationValues": {{ station_chart_values|tojson }},
+            "trendLabels": {{ trend_chart_labels|tojson }},
+            "trendValues": {{ trend_chart_values|tojson }}
+        }
+    </script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

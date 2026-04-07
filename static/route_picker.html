@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_174bdb652a4fb92bbf80d584f50bc38b {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.css"/>
+</head>
+<body>
+    
+    
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var mapRef = map_174bdb652a4fb92bbf80d584f50bc38b;
+        var clickState = "start";
+        var startMarker = null;
+        var endMarker = null;
+
+        function postLocation(field, lat, lon) {
+            window.parent.postMessage({
+                type: "route-picker",
+                field: field,
+                value: lat.toFixed(6) + ", " + lon.toFixed(6)
+            }, "*");
+        }
+
+        mapRef.on("click", function (event) {
+            var lat = event.latlng.lat;
+            var lon = event.latlng.lng;
+
+            if (clickState === "start") {
+                if (startMarker) mapRef.removeLayer(startMarker);
+                startMarker = L.marker([lat, lon], { icon: L.icon({
+                    iconUrl: "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png",
+                    shadowUrl: "https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png",
+                    iconSize: [25, 41],
+                    iconAnchor: [12, 41]
+                }) }).addTo(mapRef).bindPopup("Start Point").openPopup();
+                postLocation("start_location", lat, lon);
+                clickState = "end";
+            } else {
+                if (endMarker) mapRef.removeLayer(endMarker);
+                endMarker = L.marker([lat, lon], { icon: L.icon({
+                    iconUrl: "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png",
+                    shadowUrl: "https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png",
+                    iconSize: [25, 41],
+                    iconAnchor: [12, 41]
+                }) }).addTo(mapRef).bindPopup("Destination").openPopup();
+                postLocation("end_location", lat, lon);
+                clickState = "start";
+            }
+        });
+    });
+    </script>
+    
+    
+            <div class="folium-map" id="map_174bdb652a4fb92bbf80d584f50bc38b" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_174bdb652a4fb92bbf80d584f50bc38b = L.map(
+                "map_174bdb652a4fb92bbf80d584f50bc38b",
+                {
+                    center: [13.0827, 80.2707],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 12,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+            L.control.scale().addTo(map_174bdb652a4fb92bbf80d584f50bc38b);
+
+            
+
+        
+    
+            var tile_layer_546419fb47835f72b215d57e9dab7e2d = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_546419fb47835f72b215d57e9dab7e2d.addTo(map_174bdb652a4fb92bbf80d584f50bc38b);
+        
+    
+            var tile_layer_7057c189f8b7fa009bd4e7c376d06ca0 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "CartoDB Voyager",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_7057c189f8b7fa009bd4e7c376d06ca0.addTo(map_174bdb652a4fb92bbf80d584f50bc38b);
+        
+    
+            L.control.fullscreen(
+                {
+  "position": "topright",
+  "title": "Full Screen",
+  "titleCancel": "Exit Full Screen",
+  "forceSeparateButton": false,
+}
+            ).addTo(map_174bdb652a4fb92bbf80d584f50bc38b);
+        
+</script>
+</html>
